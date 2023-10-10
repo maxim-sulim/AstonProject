@@ -16,4 +16,29 @@ enum Resources {
         static let infoLightGray = UIColor(hexString: "#C4C9CE")
         static let infoWhite = UIColor(hexString: "#FFF")
     }
+    
+    enum TitleView {
+        enum AuthView: String {
+            case titleButton = "Sign In"
+            case titleLabelLogin = "Login"
+            case titleLabelPassword = "Password"
+            case placeholderLogin = "Enter your login"
+            case placeholderPassword = "Enter your password"
+        }
+        
+        enum TabBarItemTitle: String {
+            case chars = "Characters"
+            case logout = "Logout"
+        }
+    }
+    
+    enum LayoutView {
+        enum AuthView {
+            static let heightMainContainer = 210
+            static let widhtMainContainer = 250
+            static let heightButtonSignIn = 40
+            static let corRadiusMain: CGFloat = 20
+            static let corRadiusTextField: CGFloat = 6
+        }
+    }
 }
