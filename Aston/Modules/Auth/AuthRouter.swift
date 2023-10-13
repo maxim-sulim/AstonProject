@@ -13,7 +13,7 @@ protocol AuthRouterProtocol: AnyObject {
     func openNextViewController()
 }
 
-class AuthRouter: AuthRouterProtocol {
+final class AuthRouter: AuthRouterProtocol {
     
     weak var viewController: AuthViewController!
     

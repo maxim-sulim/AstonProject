@@ -12,7 +12,7 @@ protocol AuthViewProtocol: AnyObject {
     func setButtonTitle(with title: String)
 }
 
-class AuthViewController: UIViewController, AuthViewProtocol {
+final class AuthViewController: UIViewController, AuthViewProtocol {
     
     var presenter: AuthPresenterProtocol!
     let configurator: AuthConfiguratorProtocol = AuthConfigurator()

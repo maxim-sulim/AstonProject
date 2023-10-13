@@ -11,7 +11,7 @@ protocol AuthInteractorProtocol {
     func authSignIn()
 }
 
-class AuthInteractor: AuthInteractorProtocol {
+final class AuthInteractor: AuthInteractorProtocol {
     
     weak var presenter: AuthPresenterProtocol!
     

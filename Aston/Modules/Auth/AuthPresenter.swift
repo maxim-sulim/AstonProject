@@ -13,7 +13,7 @@ protocol AuthPresenterProtocol: AnyObject {
     func configureView()
 }
 
-class AuthPresenter: AuthPresenterProtocol {
+final class AuthPresenter: AuthPresenterProtocol {
     
     var router: AuthRouterProtocol!
     var interactor: AuthInteractorProtocol!

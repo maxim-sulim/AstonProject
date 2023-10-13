@@ -30,6 +30,13 @@ enum Resources {
             case chars = "Characters"
             case logout = "Logout"
         }
+        
+        enum CharsView {
+            static let titleNameLabel = "Name"
+            static let titleStatusLabel = "Status"
+            static let noneDataChar = "None"
+            static let nonDataImage = UIImage(named: "defImage")?.pngData()
+        }
     }
     
     enum LayoutView {
@@ -39,6 +46,13 @@ enum Resources {
             static let heightButtonSignIn = 40
             static let corRadiusMain: CGFloat = 20
             static let corRadiusTextField: CGFloat = 6
+        }
+        
+        enum CharsView {
+            static let heightTableRow: CGFloat = 135
+            static let countRowNoneData = 0
+            static let heightWidhtImageChar = 80
+            
         }
     }
 }

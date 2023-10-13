@@ -11,7 +11,7 @@ protocol AuthConfiguratorProtocol: AnyObject {
     func configure(with viewController: AuthViewController)
 }
 
-class AuthConfigurator: AuthConfiguratorProtocol {
+final class AuthConfigurator: AuthConfiguratorProtocol {
     
     
     func configure(with viewController: AuthViewController) {
