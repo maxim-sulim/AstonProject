@@ -12,11 +12,12 @@ protocol CharsViewCellProtocol: AnyObject {
     func configureCell(with model: ModelChar)
 }
 
-// Модуель данных для вию
+// Модуель данных для вию ячейки
 
 struct ModelChar {
     var name: String
     var status: String
+    var gender: String
     var imageUrl: String
     var image: Data?
 }
@@ -62,6 +63,12 @@ class CharsTableViewCell: UITableViewCell {
         return label
     }()
     
+    private var genderChar: UILabel = {
+        let label = UILabel()
+        label.textColor = Resources.Color.infoLightGray
+        return label
+    }()
+    
 //MARK: - методы установки данных для вию
     
     private func setNameChar(text: String) {
@@ -70,6 +77,10 @@ class CharsTableViewCell: UITableViewCell {
     
     private func setStatusChar(text: String) {
         self.statusChar.text = text
+    }
+    
+    private func setGenderChar(text: String) {
+        self.genderChar.text = text
     }
     
     private func setImageChar(imageData: Data?) {
@@ -100,6 +111,7 @@ class CharsTableViewCell: UITableViewCell {
         yStack.spacing = 8
         
         yStack.addArrangedSubview(nameChar)
+        yStack.addArrangedSubview(genderChar)
         yStack.addArrangedSubview(statusChar)
         
         let xStack = UIStackView()
@@ -123,7 +135,7 @@ class CharsTableViewCell: UITableViewCell {
         }
         
         imageChar.snp.makeConstraints { make in
-            make.height.width.equalTo(Resources.LayoutView.CharsView.heightWidhtImageChar)
+            make.height.width.equalTo(Resources.LayoutView.CharsView.boundsImageChar.height)
         }
         
     }
@@ -138,5 +150,6 @@ extension CharsTableViewCell: CharsViewCellProtocol {
         setNameChar(text: model.name)
         setStatusChar(text: model.status)
         setImageChar(imageData: model.image)
+        setGenderChar(text: model.gender)
     }
 }

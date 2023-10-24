@@ -13,19 +13,23 @@ final class RootCoordinator {
     var window: UIWindow!
     private weak var authVc: AuthViewController?
     private weak var tabBarVc: TabBarController?
-    private let navigationController: UINavigationController
+    private var navController: UINavigationController?
+    var storage: UserStorageProtocol = UserStorage()
     
-    var isSignIn: Bool = {
-        let isSign = true
-        return isSign
+   lazy var isSignIn: Bool = {
+       
+       let lastLogin = storage.returnLastLogin()
+       return storage.isAuthLogin(login: lastLogin)
+       
     }()
     
     init(scene: UIWindowScene) {
-        navigationController = UINavigationController()
+        
+        self.navController = UINavigationController()
         
         let window = UIWindow(windowScene: scene)
         window.backgroundColor = Resources.Color.blackBackGround
-        window.rootViewController = navigationController
+        window.rootViewController = navController
         window.makeKeyAndVisible()
         
         self.window = window
@@ -39,7 +43,7 @@ final class RootCoordinator {
     private func setup() {
         let splash = UIStoryboard(name: "LaunchScreen", bundle: nil)
             .instantiateViewController(withIdentifier: "LaunchScreen")
-        navigationController.setViewControllers([splash], animated: false)
+        navController?.setViewControllers([splash], animated: false)
     }
     
     private func showVC() {
@@ -47,13 +51,13 @@ final class RootCoordinator {
         if !isSignIn {
             
             let vc = AuthViewController()
-            navigationController.setViewControllers([vc], animated: true)
+            navController?.setViewControllers([vc], animated: true)
             self.authVc = vc
             
         } else {
             
             let vc = TabBarController()
-            navigationController.setViewControllers([vc], animated: true)
+            navController?.setViewControllers([vc], animated: true)
             self.tabBarVc = vc
             
         }

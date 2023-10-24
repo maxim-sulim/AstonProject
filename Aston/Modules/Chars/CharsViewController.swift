@@ -10,7 +10,7 @@ import UIKit
 protocol CharsViewProtocol: AnyObject {
     func configureNavigationBar(title: String)
     func reloadTable()
-    func reloadTableRow(indexPath: IndexPath)
+    func reloadTableRow(indexCell: Int)
     var countChars: Int? { get set }
     var cellView: CharsViewCellProtocol? { get set }
 }
@@ -33,7 +33,7 @@ final class CharsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+        setupView()
         configurator.configureController(with: self)
         presentor.configureView()
     }
@@ -54,10 +54,10 @@ final class CharsViewController: UIViewController {
     
 //MARK: - приватные методы
     
-   private func configure() {
+   private func setupView() {
+       navigationBarSetup()
        makeConstrain()
     }
-    
     
     private func makeConstrain() {
         
@@ -69,19 +69,29 @@ final class CharsViewController: UIViewController {
         
     }
     
+    private func navigationBarSetup() {
+        navigationController?.navigationBar.tintColor = .white
+        navigationItem.setHidesBackButton(true, animated: true)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.largeTitleTextAttributes = [
+         NSAttributedString.Key.foregroundColor: UIColor.white
+        ]
+    }
+    
+    
 }
 
 //MARK: - реализация методов протокола
 
 extension CharsViewController: CharsViewProtocol {
     
-    func reloadTableRow(indexPath: IndexPath) {
+    func reloadTableRow(indexCell: Int) {
+        let indexPath = IndexPath(item: indexCell, section: 0)
         self.tableView.reloadRows(at: [indexPath], with: .none)
     }
     
     func configureNavigationBar(title: String) {
         self.navigationItem.title = title
-        self.navigationController?.navigationBar.tintColor = .white
     }
     
     func reloadTable() {
@@ -96,6 +106,7 @@ extension CharsViewController: CharsViewProtocol {
 extension CharsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presentor.showEpisodeScene(indexCell: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -108,11 +119,24 @@ extension CharsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CharsTableViewCell.description(), for: indexPath) as! CharsTableViewCell
+        
+        var cell: CharsTableViewCell
+        
+        
+        if let reuseCell = tableView.dequeueReusableCell(withIdentifier: CharsTableViewCell.description()) {
+            
+            cell = reuseCell as! CharsTableViewCell
+            
+        } else {
+            
+            cell = UITableViewCell(style: .default, reuseIdentifier: CharsTableViewCell.description()) as! CharsTableViewCell
+        }
+        
         cellView = cell.self
-        let model = presentor.configureViewCell(indexPath: indexPath)
+        let model = presentor.configureViewCell(indexCell: indexPath.row)
         cellView?.configureCell(with: model)
         return cell
+        
     }
     
 }

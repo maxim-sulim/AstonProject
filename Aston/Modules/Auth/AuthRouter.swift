@@ -22,7 +22,8 @@ final class AuthRouter: AuthRouterProtocol {
     }
     
     func openNextViewController() {
-        
+        viewController.dismiss(animated: true)
+        viewController.navigationController?.pushViewController(TabBarController(), animated: true)
     }
     
     func closeCurrentViewController() {

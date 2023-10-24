@@ -37,22 +37,35 @@ enum Resources {
             static let noneDataChar = "None"
             static let nonDataImage = UIImage(named: "defImage")?.pngData()
         }
+        
+        enum EpisodesView: String {
+            case noneDataEpisode = "None data or episode"
+            case titleLabelNumber = "Number Episode"
+            case titleLabelName = "Name Episode"
+            case titleLabelDate = "Date Episode"
+        }
     }
     
     enum LayoutView {
         enum AuthView {
-            static let heightMainContainer = 210
-            static let widhtMainContainer = 250
+            static let boundsMainContainer = (height: 210, widht: 250)
             static let heightButtonSignIn = 40
             static let corRadiusMain: CGFloat = 20
             static let corRadiusTextField: CGFloat = 6
         }
         
         enum CharsView {
-            static let heightTableRow: CGFloat = 135
+            static let heightTableRow: CGFloat = 150
             static let countRowNoneData = 0
-            static let heightWidhtImageChar = 80
+            static let boundsImageChar = (height: 90, widht: 90)
             
+        }
+        
+        enum EpisodeView {
+            static let heightCollectionRow: CGFloat = 70
+            static let spaceCollectionRow: CGFloat = 20
+            static let collectionLayoutInsets: CGFloat = 16
+            static let spacingForSection: CGFloat = 20
         }
     }
 }

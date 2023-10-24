@@ -10,7 +10,7 @@ import Foundation
 protocol CharsInteractorProtocol: AnyObject {
     var charsFromApi: [ResultChar] { get }
     var imageChars: [Int:Data] { get }
-    func loadImageChar(charUrl: String, indexPath: IndexPath)
+    func loadImageChar(charUrl: String, indexCell: Int)
     func loadChars()
     var cachedDataImageChar: NSCache<AnyObject, NSData> { get }
 }
@@ -53,7 +53,7 @@ extension CharsInteractor: CharsInteractorProtocol {
         startRequest()
     }
     
-    func loadImageChar(charUrl: String, indexPath: IndexPath) {
+    func loadImageChar(charUrl: String, indexCell: Int) {
         
         let urlString = charUrl
         
@@ -65,11 +65,16 @@ extension CharsInteractor: CharsInteractorProtocol {
                 
                 do {
                     
-                    self.imageChars[indexPath.row] = data
-                    DispatchQueue.main.async {
-                        self.presentor.reloadTableRow(indexPath: indexPath)
+                    if let _ = self.cachedDataImageChar.object(forKey: indexCell as AnyObject) {
+    
+//если комплишен запроса вернется, когда эта ячейка уже была загружена, выходим из метода не обновляя ее
+                        return
+                    } else {
+                        
+                        self.imageChars[indexCell] = data
+                        self.presentor.reloadTableRow(indexCell: indexCell)
+                        self.cachedDataImageChar.setObject(data as NSData, forKey: indexCell as AnyObject)
                     }
-                    self.cachedDataImageChar.setObject(data as NSData, forKey: indexPath.row as AnyObject)
                     
                 }
                 

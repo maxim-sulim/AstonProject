@@ -11,25 +11,50 @@ protocol AuthPresenterProtocol: AnyObject {
     var router: AuthRouterProtocol! { get set }
     func signIn()
     func configureView()
+    func closeAuth()
 }
 
-final class AuthPresenter: AuthPresenterProtocol {
+final class AuthPresenter {
     
     var router: AuthRouterProtocol!
     var interactor: AuthInteractorProtocol!
     weak var view: AuthViewProtocol!
-
-    func signIn() {
-        
-    }
     
     init(view: AuthViewProtocol) {
         self.view = view
     }
     
+}
+
+extension AuthPresenter: AuthPresenterProtocol {
+ 
     func configureView() {
-        let title = Resources.TitleView.AuthView.titleButton.rawValue
-        view.setButtonTitle(with: title)
+        
     }
     
+    func closeAuth() {
+        
+        if interactor.isLoaded {
+            router.openNextViewController()
+        }
+// else alert error
+    }
+    
+    func signIn() {
+        
+        guard let login = view.getloginUser(), login.count > 0 else {
+            return
+        }
+        
+        guard let paswword = view.getPassswordUser(), paswword.count > 0 else {
+            return
+        }
+        
+        let user: UserProtocol = User(login: login, password: paswword)
+        
+        interactor.authSignIn(user: user)
+    }
+    
+    
 }
+

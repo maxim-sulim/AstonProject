@@ -8,17 +8,17 @@
 import Foundation
 
 protocol CharsPresentorProtocol: AnyObject {
-    func configureViewCell(indexPath: IndexPath) -> ModelChar
+    func configureViewCell(indexCell: Int) -> ModelChar
     func configureView()
     func loadTable()
-    func reloadTableRow(indexPath: IndexPath)
+    func reloadTableRow(indexCell: Int)
+    func showEpisodeScene(indexCell: Int)
 }
 
 final class CharsPresentor {
     
     var router: CharsRouterProtocol!
     var interactor: CharsInteractorProtocol!
-    
     
     weak var view: CharsViewProtocol!
     
@@ -30,25 +30,29 @@ final class CharsPresentor {
 
 extension CharsPresentor: CharsPresentorProtocol {
     
-    func configureViewCell(indexPath: IndexPath) -> ModelChar {
+    func configureViewCell(indexCell: Int) -> ModelChar {
 
+//устанавливаем дефолт значения
         var model = ModelChar(name: Resources.TitleView.CharsView.noneDataChar,
                               status: Resources.TitleView.CharsView.noneDataChar,
+                              gender: Resources.TitleView.CharsView.noneDataChar,
                               imageUrl: "",
                               image: Resources.TitleView.CharsView.nonDataImage)
-        
-        if let name = interactor.charsFromApi.saveObject(at: indexPath.row)?.name,
-           let status = interactor.charsFromApi.saveObject(at: indexPath.row)?.status,
-           let imageUrl = interactor.charsFromApi.saveObject(at: indexPath.row)?.image {
+
+//если есть данные от сервера, устанавливаем их
+        if let name = interactor.charsFromApi.saveObject(at: indexCell)?.name,
+           let status = interactor.charsFromApi.saveObject(at: indexCell)?.status,
+           let imageUrl = interactor.charsFromApi.saveObject(at: indexCell)?.image,
+           let gender = interactor.charsFromApi.saveObject(at: indexCell)?.gender {
             
-            if let data = interactor.cachedDataImageChar.object(forKey: indexPath.row as AnyObject) {
+            if let data = interactor.cachedDataImageChar.object(forKey: indexCell as AnyObject) {
                 
                 model.image = data as Data
                 
             } else {
                 
                 DispatchQueue.global().async {
-                    self.interactor.loadImageChar(charUrl: model.imageUrl, indexPath: indexPath)
+                    self.interactor.loadImageChar(charUrl: model.imageUrl, indexCell: indexCell)
                 }
                 
             }
@@ -56,8 +60,9 @@ extension CharsPresentor: CharsPresentorProtocol {
             model.imageUrl = imageUrl
             model.name = name
             model.status = status
+            model.gender = gender
             
-            if let imageData = interactor.imageChars[indexPath.row] {
+            if let imageData = interactor.imageChars[indexCell] {
                 model.image = imageData
             }
         }
@@ -73,12 +78,15 @@ extension CharsPresentor: CharsPresentorProtocol {
     
     func loadTable() {
         view.countChars = interactor.charsFromApi.count
-        view.reloadTable()
     }
     
-    func reloadTableRow(indexPath: IndexPath) {
-        view.reloadTableRow(indexPath: indexPath)
-        
+    func reloadTableRow(indexCell: Int) {
+        view.reloadTableRow(indexCell: indexCell)
+    }
+    
+    func showEpisodeScene(indexCell: Int) {
+        let episodeUrl = interactor.charsFromApi[indexCell].episode
+        router.showEpisodeScene(episodes: episodeUrl)
     }
     
 }

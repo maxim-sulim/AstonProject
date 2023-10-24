@@ -14,7 +14,6 @@ protocol CharsConfiguratorProtocol: AnyObject {
 
 final class CharsConfigurator: CharsConfiguratorProtocol {
     
-    
     func configureController(with viewController: CharsViewController) {
         
         let presentor = CharsPresentor(view: viewController)

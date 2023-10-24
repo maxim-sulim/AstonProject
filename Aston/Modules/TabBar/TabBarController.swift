@@ -16,10 +16,11 @@ final class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+        setupview()
     }
     
-    private func configure() {
+    private func setupview() {
+        self.navigationItem.setHidesBackButton(true, animated: true)
         tabBar.backgroundColor = Resources.Color.blackGrayBackGround
         tabBar.tintColor = .white
         tabBar.barTintColor = Resources.Color.blackGrayBackGround.withAlphaComponent(0.5)
@@ -27,7 +28,7 @@ final class TabBarController: UITabBarController {
         
         
         let charsController = CharsViewController()
-        let logoutController = UIViewController()
+        let logoutController = LogoutViewController()
         
         let charsNavigation = UINavigationController(rootViewController: charsController)
         let logotNavigation = UINavigationController(rootViewController: logoutController)
