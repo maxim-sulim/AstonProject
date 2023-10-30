@@ -13,11 +13,11 @@ protocol LogoutInteractorProtocol: AnyObject {
 
 final class LogoutInteractor {
     
-    var presentor: LogoutPresenterProtocol!
+    var presenter: LogoutPresenterProtocol!
     var storage: UserStorageProtocol = UserStorage()
     
-    init(presentor: LogoutPresenterProtocol!) {
-        self.presentor = presentor
+    init(presenter: LogoutPresenterProtocol!) {
+        self.presenter = presenter
     }
     
     
@@ -30,7 +30,7 @@ extension LogoutInteractor: LogoutInteractorProtocol {
         let login = storage.returnLastLogin()
         storage.outLoginAuth(login: login)
         
-        presentor.authScene()
+        presenter.authScene()
     }
     
 }

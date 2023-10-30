@@ -58,7 +58,7 @@ enum Resources {
             static let heightTableRow: CGFloat = 150
             static let countRowNoneData = 0
             static let boundsImageChar = (height: 90, widht: 90)
-            
+            static let reserveRows = 5
         }
         
         enum EpisodeView {

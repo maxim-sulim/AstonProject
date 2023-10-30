@@ -14,14 +14,23 @@ protocol LogoutViewProtocol: AnyObject {
 
 final class LogoutViewController: UIViewController {
 
-    
-    var presentor: LogoutPresenterProtocol!
+    var presenter: LogoutPresenterProtocol!
     let configurator: LogoutConfiguratorProtocol = LogoutConfigurator()
+    var rootCoordinator: RootCoordinatorProtocol
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(with: self)
         setupView()
+    }
+    
+    init(rootCoordinator: RootCoordinatorProtocol) {
+        self.rootCoordinator = rootCoordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private var logoutButton: UIButton = {
@@ -56,11 +65,10 @@ final class LogoutViewController: UIViewController {
     }
     
     @objc private func tapOut() {
-        presentor.tapOut()
+        presenter.tapOut()
     }
 
 }
-
 
 extension LogoutViewController: LogoutViewProtocol {
     

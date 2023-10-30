@@ -16,13 +16,13 @@ final class AuthConfigurator: AuthConfiguratorProtocol {
     
     func configure(with viewController: AuthViewController) {
         
-        let presentor = AuthPresenter(view: viewController)
-        let interactor = AuthInteractor(presenter: presentor)
+        let presenter = AuthPresenter(view: viewController)
+        let interactor = AuthInteractor(presenter: presenter)
         let router = AuthRouter(viewController: viewController)
         
-        viewController.presenter = presentor
-        presentor.interactor = interactor
-        presentor.router = router
+        viewController.presenter = presenter
+        presenter.interactor = interactor
+        presenter.router = router
     }
     
     

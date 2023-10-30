@@ -12,12 +12,6 @@ protocol EpisodeCollectionCellProtocol {
     func configureCell(model: EpisodeCellModel)
 }
 
-struct EpisodeCellModel {
-    var name: String
-    var number: String
-    var date: String
-}
-
 final class EpisodeCollectionCell: UICollectionViewCell {
     
     override func layoutSubviews() {

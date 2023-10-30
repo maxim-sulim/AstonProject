@@ -27,8 +27,6 @@ final class LogoutPresenter {
     
 }
 
-
-
 extension LogoutPresenter: LogoutPresenterProtocol {
     
     func tapOut() {

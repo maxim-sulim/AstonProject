@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol EpisodePresentorProtocol: AnyObject {
+protocol EpisodePresenterProtocol: AnyObject {
     func loadCollection()
     func loadEpisode(episodes: [String])
     func configureViewCell(indexCell: Int) -> EpisodeCellModel
 }
 
-final class EpisodePresentor {
+final class EpisodePresenter {
     
     weak var view: EpisodeViewProtocol!
     var router: EpisodeRouterProtocol!
@@ -24,8 +24,7 @@ final class EpisodePresentor {
     }
 }
 
-
-extension EpisodePresentor: EpisodePresentorProtocol {
+extension EpisodePresenter: EpisodePresenterProtocol {
     
     func loadEpisode(episodes: [String]) {
         interactor.loadEpisodes(episodes: episodes)

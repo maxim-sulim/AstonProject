@@ -25,7 +25,7 @@ final class LogoutRouter {
 extension LogoutRouter: LogoutRouterProtocol {
     
     func presentAuthScene() {
-    
+        viewController.rootCoordinator.rootViewCoordinator?.showAuthScreen()
     }
     
 }

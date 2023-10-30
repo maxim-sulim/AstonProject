@@ -17,7 +17,7 @@ protocol EpisodeViewProtocol: AnyObject {
 
 final class EpisodeViewController: UIViewController {
     
-    var presentor: EpisodePresentorProtocol!
+    var presenter: EpisodePresenterProtocol!
     let configurator: EpisodeConfiguratorProtocol = EpisodeConfigurator()
     
     override func viewDidLoad() {
@@ -45,8 +45,7 @@ final class EpisodeViewController: UIViewController {
     }()
     
     private func setupView() {
-        
-       
+        navigationController?.navigationBar.prefersLargeTitles = false
         view.backgroundColor = Resources.Color.blackBackGround
         view.addSubview(collectionView)
         collectionView.register(EpisodeCollectionCell.self,
@@ -67,7 +66,7 @@ extension EpisodeViewController: EpisodeViewProtocol {
     
     func configureView(episodes: [String]) {
         configurator.configureView(with: self)
-        presentor.loadEpisode(episodes: episodes)
+        presenter.loadEpisode(episodes: episodes)
     }
     
 }
@@ -83,7 +82,7 @@ extension EpisodeViewController: UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EpisodeCollectionCell.description(), for: indexPath) as! EpisodeCollectionCell
         
-        cell.configureCell(model: presentor.configureViewCell(indexCell: indexPath.row))
+        cell.configureCell(model: presenter.configureViewCell(indexCell: indexPath.row))
         
         return cell
     }

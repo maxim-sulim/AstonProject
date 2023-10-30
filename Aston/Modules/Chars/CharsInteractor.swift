@@ -11,21 +11,30 @@ protocol CharsInteractorProtocol: AnyObject {
     var charsFromApi: [ResultChar] { get }
     var imageChars: [Int:Data] { get }
     func loadImageChar(charUrl: String, indexCell: Int)
-    func loadChars()
+    func loadChars(countChars: Int)
     var cachedDataImageChar: NSCache<AnyObject, NSData> { get }
 }
 
 final class CharsInteractor {
     
-    weak var presentor: CharsPresentorProtocol!
+    weak var presenter: CharsPresenterProtocol!
     
-    init(presentor: CharsPresentorProtocol) {
-        self.presentor = presentor
+    init(presenter: CharsPresenterProtocol) {
+        self.presenter = presenter
     }
 
 //MARK: private propirties
     
-    private var nextUrlChars: String = ""
+// ссылка на новых чаров
+    private var nextUrlChars: String = "" {
+        didSet {
+            isLoadedChars = false
+        }
+    }
+    
+// флаг загрузки новых чаров
+    private var isLoadedChars = false
+    private var charsOnTheScreen: Int = Resources.LayoutView.CharsView.countRowNoneData
     
 //MARK: - protocol methods
     
@@ -49,7 +58,8 @@ final class CharsInteractor {
 
 extension CharsInteractor: CharsInteractorProtocol {
     
-    func loadChars() {
+    func loadChars(countChars: Int) {
+        charsOnTheScreen += countChars
         startRequest()
     }
     
@@ -65,15 +75,19 @@ extension CharsInteractor: CharsInteractorProtocol {
                 
                 do {
                     
-                    if let _ = self.cachedDataImageChar.object(forKey: indexCell as AnyObject) {
-    
-//если комплишен запроса вернется, когда эта ячейка уже была загружена, выходим из метода не обновляя ее
-                        return
-                    } else {
+                    self.imageChars[indexCell] = data
+                    self.cachedDataImageChar.setObject(data as NSData, forKey: indexCell as AnyObject)
+                    
+                    if indexCell + 1 == self.charsOnTheScreen - Resources.LayoutView.CharsView.reserveRows {
+                        self.presenter.reloadTable()
+                    }
+                    
+                    if indexCell + Resources.LayoutView.CharsView.reserveRows ==
+                        self.charsFromApi.count && self.isLoadedChars == false {
                         
-                        self.imageChars[indexCell] = data
-                        self.presentor.reloadTableRow(indexCell: indexCell)
-                        self.cachedDataImageChar.setObject(data as NSData, forKey: indexCell as AnyObject)
+                        self.loadCharacters(urlCharacters: self.nextUrlChars)
+                        self.isLoadedChars = true
+                        
                     }
                     
                 }
@@ -125,11 +139,10 @@ extension CharsInteractor {
                     return
                 }
                 
-                //self.appCharsFromApi(resultsChar: resultData.results)
                 self.charsFromApi += resultData.results
                 self.nextUrlChars = resultData.info.next
                 
-                self.presentor.loadTable()
+                self.presenter.reloadTable()
                                 
             } else {
                 print(error!.localizedDescription)

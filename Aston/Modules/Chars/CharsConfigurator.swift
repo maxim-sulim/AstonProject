@@ -16,13 +16,13 @@ final class CharsConfigurator: CharsConfiguratorProtocol {
     
     func configureController(with viewController: CharsViewController) {
         
-        let presentor = CharsPresentor(view: viewController)
-        let interactor = CharsInteractor(presentor: presentor)
+        let presenter = CharsPresenter(view: viewController)
+        let interactor = CharsInteractor(presenter: presenter)
         let router = CharsRouter(viewController: viewController)
         
-        presentor.interactor = interactor
-        presentor.router = router
-        viewController.presentor = presentor
+        presenter.interactor = interactor
+        presenter.router = router
+        viewController.presenter = presenter
     }
     
 }

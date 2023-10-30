@@ -15,13 +15,13 @@ protocol EpisodeConfiguratorProtocol: AnyObject {
 final class EpisodeConfigurator: EpisodeConfiguratorProtocol {
     
     func configureView(with viewController: EpisodeViewController) {
-        let presentor = EpisodePresentor(view: viewController)
-        let interactor = EpisodeInteractor(presentor: presentor)
+        let presenter = EpisodePresenter(view: viewController)
+        let interactor = EpisodeInteractor(presenter: presenter)
         let router = EpisodeRouter(viewController: viewController)
         
-        presentor.router = router
-        presentor.interactor = interactor
-        viewController.presentor = presentor
+        presenter.router = router
+        presenter.interactor = interactor
+        viewController.presenter = presenter
     }
     
 }

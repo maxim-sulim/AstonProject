@@ -14,16 +14,15 @@ protocol EpisodeInteractorProtocol: AnyObject {
 
 final class EpisodeInteractor {
     
-    var presentor: EpisodePresentorProtocol!
+    var presenter: EpisodePresenterProtocol!
     
-    init(presentor: EpisodePresentorProtocol!) {
-        self.presentor = presentor
+    init(presenter: EpisodePresenterProtocol!) {
+        self.presenter = presenter
     }
     
     var episodeFromChar: [EpisodeCellModel] = []
     
 }
-
 
 extension EpisodeInteractor: EpisodeInteractorProtocol {
     
@@ -32,7 +31,6 @@ extension EpisodeInteractor: EpisodeInteractorProtocol {
     }
     
 }
-
 
 extension EpisodeInteractor {
     
@@ -69,7 +67,7 @@ extension EpisodeInteractor {
                         self.episodeFromChar = self.sortedEpisodes(arrEpisode: &self.episodeFromChar)
                         
                         if i == episodeUrl.count - 1 {
-                            self.presentor.loadCollection()
+                            self.presenter.loadCollection()
                         }
                         
                     } else {

@@ -10,7 +10,6 @@ import Foundation
 protocol AuthPresenterProtocol: AnyObject {
     var router: AuthRouterProtocol! { get set }
     func signIn()
-    func configureView()
     func closeAuth()
 }
 
@@ -27,10 +26,6 @@ final class AuthPresenter {
 }
 
 extension AuthPresenter: AuthPresenterProtocol {
- 
-    func configureView() {
-        
-    }
     
     func closeAuth() {
         

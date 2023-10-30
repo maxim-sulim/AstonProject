@@ -17,13 +17,23 @@ final class AuthViewController: UIViewController, AuthViewProtocol {
     
     var presenter: AuthPresenterProtocol!
     let configurator: AuthConfiguratorProtocol = AuthConfigurator()
+    var rootCoordinator: RootCoordinatorProtocol
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(with: self)
-        presenter.configureView()
         setAuthView()
     }
+    
+    init(rootCoordinator: RootCoordinatorProtocol) {
+        self.rootCoordinator = rootCoordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
 //MARK: - enum TextField
     

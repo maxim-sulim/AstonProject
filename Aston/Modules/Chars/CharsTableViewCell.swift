@@ -8,20 +8,6 @@
 import UIKit
 import SnapKit
 
-protocol CharsViewCellProtocol: AnyObject {
-    func configureCell(with model: ModelChar)
-}
-
-// Модуель данных для вию ячейки
-
-struct ModelChar {
-    var name: String
-    var status: String
-    var gender: String
-    var imageUrl: String
-    var image: Data?
-}
-
 class CharsTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
@@ -29,6 +15,10 @@ class CharsTableViewCell: UITableViewCell {
         configureDefCell()
     }
 
+//Public properties
+    
+    var presenter: CharsPresenterProtocol?
+    var indexCell: Int?
    
 //MARK: - экземпляры вию
     
@@ -94,12 +84,24 @@ class CharsTableViewCell: UITableViewCell {
         
     }
     
-    
 //MARK: - метод конфигурации вию
     
     private func configureDefCell() {
+        
         self.backgroundColor = Resources.Color.blackBackGround
         makeConstraint()
+        
+        if let index = indexCell {
+            guard let model = presenter?.getModelViewCell(indexCell: index) else { return }
+            configureCell(with: model)
+        }
+    }
+    
+   private func configureCell(with model: ModelChar) {
+        setNameChar(text: model.name)
+        setStatusChar(text: model.status)
+        setImageChar(imageData: model.image)
+        setGenderChar(text: model.gender)
     }
     
     private func makeConstraint() {
@@ -142,14 +144,5 @@ class CharsTableViewCell: UITableViewCell {
 
 }
 
-//MARK - методы протокола
 
-extension CharsTableViewCell: CharsViewCellProtocol {
-    
-    func configureCell(with model: ModelChar) {
-        setNameChar(text: model.name)
-        setStatusChar(text: model.status)
-        setImageChar(imageData: model.image)
-        setGenderChar(text: model.gender)
-    }
-}
+

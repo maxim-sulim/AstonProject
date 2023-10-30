@@ -18,8 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         rootCoordinator = RootCoordinator(scene: scene)
+        rootCoordinator?.configure()
         window = rootCoordinator?.window
-        rootCoordinator?.start()
         
     }
 

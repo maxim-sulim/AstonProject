@@ -18,6 +18,16 @@ final class TabBarController: UITabBarController {
         super.viewDidLoad()
         setupview()
     }
+    var rootCoordinator: RootCoordinatorProtocol
+    
+    init(rootCoordinator: RootCoordinatorProtocol) {
+        self.rootCoordinator = rootCoordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private func setupview() {
         self.navigationItem.setHidesBackButton(true, animated: true)
@@ -28,7 +38,7 @@ final class TabBarController: UITabBarController {
         
         
         let charsController = CharsViewController()
-        let logoutController = LogoutViewController()
+        let logoutController = LogoutViewController(rootCoordinator: rootCoordinator)
         
         let charsNavigation = UINavigationController(rootViewController: charsController)
         let logotNavigation = UINavigationController(rootViewController: logoutController)

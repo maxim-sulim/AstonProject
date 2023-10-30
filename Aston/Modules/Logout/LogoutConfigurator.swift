@@ -16,13 +16,13 @@ final class LogoutConfigurator: LogoutConfiguratorProtocol {
     
     func configure(with viewController: LogoutViewController) {
         
-        let presentor = LogoutPresenter(view: viewController)
-        let interactor = LogoutInteractor(presentor: presentor)
+        let presenter = LogoutPresenter(view: viewController)
+        let interactor = LogoutInteractor(presenter: presenter)
         let router = LogoutRouter(viewController: viewController)
         
-        presentor.interactor = interactor
-        presentor.router = router
-        viewController.presentor = presentor
+        presenter.interactor = interactor
+        presenter.router = router
+        viewController.presenter = presenter
     }
     
 }
