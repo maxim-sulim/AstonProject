@@ -15,6 +15,7 @@ protocol RootViewControllerProtocol: AnyObject {
     func swithToAuth()
 }
 
+///Стартовый, самый старший котнроллер окна
 final class RootViewController: UIViewController {
 
     var storage: UserStorageProtocol = UserStorage()

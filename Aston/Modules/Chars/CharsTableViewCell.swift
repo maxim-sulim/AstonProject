@@ -12,7 +12,7 @@ class CharsTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        configureDefCell()
+        setupView()
     }
 
 //Public properties
@@ -22,11 +22,13 @@ class CharsTableViewCell: UITableViewCell {
    
 //MARK: - экземпляры вию
     
+    private let activityIndicator = UIActivityIndicatorView()
+    
     private var imageChar: UIImageView = {
         
         let view = UIImageView()
         view.backgroundColor = .gray
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = Resources.LayoutView.CharsView.corRadius
         view.clipsToBounds = true
         
         return view
@@ -34,7 +36,7 @@ class CharsTableViewCell: UITableViewCell {
     
     private var mainView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = Resources.LayoutView.CharsView.corRadius
         view.backgroundColor = Resources.Color.blackGrayBackGround
         return view
     }()
@@ -75,18 +77,29 @@ class CharsTableViewCell: UITableViewCell {
     
     private func setImageChar(imageData: Data?) {
         
-        guard let imageData = imageData else {
-            return
-        }
+        guard let data = imageData else { return }
+        configureActivityInd()
         
-        let image = UIImage(data: imageData)
+        let image = UIImage(data: data)
         self.imageChar.image = image
+        
+        if Resources.TitleView.CharsView.nonDataImage == data {
+            
+            imageChar.addSubview(activityIndicator)
+            activityIndicator.frame = imageChar.bounds
+            activityIndicator.startAnimating()
+            
+        } else {
+            
+            activityIndicator.stopAnimating()
+            activityIndicator.isHidden = true
+        }
         
     }
     
 //MARK: - метод конфигурации вию
     
-    private func configureDefCell() {
+    private func setupView() {
         
         self.backgroundColor = Resources.Color.blackBackGround
         makeConstraint()
@@ -95,6 +108,12 @@ class CharsTableViewCell: UITableViewCell {
             guard let model = presenter?.getModelViewCell(indexCell: index) else { return }
             configureCell(with: model)
         }
+    }
+    
+    private func configureActivityInd() {
+        self.activityIndicator.backgroundColor = UIColor(white: 0, alpha: 0)
+        self.activityIndicator.color = Resources.Color.poisonousGreen
+        self.activityIndicator.style = .medium
     }
     
    private func configureCell(with model: ModelChar) {
@@ -120,7 +139,7 @@ class CharsTableViewCell: UITableViewCell {
         xStack.axis = .horizontal
         xStack.distribution = .equalSpacing
         xStack.spacing = 10
-        xStack.layer.cornerRadius = 10
+        xStack.layer.cornerRadius = Resources.LayoutView.CharsView.corRadius
         
         xStack.addArrangedSubview(imageChar)
         xStack.addArrangedSubview(yStack)

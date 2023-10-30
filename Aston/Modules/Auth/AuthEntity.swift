@@ -1,12 +1,11 @@
 //
-//  Model.swift
+//  AuthEntity.swift
 //  Aston
 //
-//  Created by Максим Сулим on 18.10.2023.
+//  Created by Максим Сулим on 30.10.2023.
 //
 
 import Foundation
-
 
 protocol UserProtocol {
     var login: String { get set }

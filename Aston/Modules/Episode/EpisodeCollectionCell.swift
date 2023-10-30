@@ -8,15 +8,15 @@
 import UIKit
 import SnapKit
 
-protocol EpisodeCollectionCellProtocol {
-    func configureCell(model: EpisodeCellModel)
-}
-
 final class EpisodeCollectionCell: UICollectionViewCell {
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         setupView()
     }
+    
+    var presenter: EpisodePresenterProtocol?
+    var indexCell: Int?
     
 //MARK: - приватные свойства вию
     
@@ -57,6 +57,17 @@ final class EpisodeCollectionCell: UICollectionViewCell {
         self.contentView.layer.cornerRadius = 16
         self.contentView.addSubview(mainContainer)
         makeConstraint()
+        
+        if let index = indexCell {
+            guard let model = presenter?.getEpisodeModelCell(indexCell: index) else { return }
+            configureCell(model: model)
+        }
+    }
+    
+    private func configureCell(model: EpisodeCellModel) {
+        nameEpisode.text = model.name
+        numberEpisode.text = model.number
+        dateEpisode.text = model.date
     }
     
     private func makeConstraint() {
@@ -91,15 +102,7 @@ final class EpisodeCollectionCell: UICollectionViewCell {
         }
     }
     
+    
 }
 
 
-extension EpisodeCollectionCell: EpisodeCollectionCellProtocol {
-    
-    func configureCell(model: EpisodeCellModel) {
-        nameEpisode.text = model.name
-        numberEpisode.text = model.number
-        dateEpisode.text = model.date
-    }
-    
-}

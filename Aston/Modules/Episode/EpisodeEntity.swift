@@ -8,6 +8,7 @@
 import Foundation
 
 
+///Вью модель ячейки эпизода
 struct EpisodeCellModel {
     var name: String
     var number: String

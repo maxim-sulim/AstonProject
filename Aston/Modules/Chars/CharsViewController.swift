@@ -8,18 +8,20 @@
 import UIKit
 
 protocol CharsViewProtocol: AnyObject {
+    ///установка тайтлов
     func configureNavigationBar(title: String)
+    ///перезагрузка таблицы
     func reloadTable()
+    ///количество загруженных чаров
     var countChars: Int? { get set }
 }
 
 final class CharsViewController: UIViewController {
     
-//ссылки делегатов
+    //ссылки делегатов
     let configurator: CharsConfiguratorProtocol = CharsConfigurator()
     var presenter: CharsPresenterProtocol!
     
-// свойство протокола
     var countChars: Int? {
         didSet {
             DispatchQueue.main.async {
@@ -37,12 +39,13 @@ final class CharsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        //При навигации на сцену епизодов изменяем настройки бара
+        navigationBarSetup()
     }
     
 //MARK: - приватные свойства
     
-//количество отображаемых ячеек на экране  + запас для плавной загрузки новых
+    ///количество отображаемых ячеек на экране  + запас для плавной загрузки новых
     lazy private var screenCountRows: Int = {
         let reserve = Resources.LayoutView.CharsView.reserveRows
         return Int(view.bounds.height / Resources.LayoutView.CharsView.heightTableRow) + reserve
@@ -64,7 +67,6 @@ final class CharsViewController: UIViewController {
     
     private func setupView() {
         countChars = screenCountRows
-        navigationBarSetup()
         makeConstrain()
     }
     
@@ -136,6 +138,10 @@ extension CharsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         let reserve = Resources.LayoutView.CharsView.reserveRows
+        
+        guard reserve + indexPath.row < Resources.LayoutView.CharsView.maxCountChars else {
+            return
+        }
         
         if indexPath.row == self.countChars! - reserve {
             self.countChars! += screenCountRows

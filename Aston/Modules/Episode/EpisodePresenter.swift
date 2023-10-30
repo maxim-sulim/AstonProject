@@ -8,9 +8,10 @@
 import Foundation
 
 protocol EpisodePresenterProtocol: AnyObject {
-    func loadCollection()
+    ///Установка к-ва загруженных эпизодов
+    func getCountEpisode()
     func loadEpisode(episodes: [String])
-    func configureViewCell(indexCell: Int) -> EpisodeCellModel
+    func getEpisodeModelCell(indexCell: Int) -> EpisodeCellModel
 }
 
 final class EpisodePresenter {
@@ -30,11 +31,11 @@ extension EpisodePresenter: EpisodePresenterProtocol {
         interactor.loadEpisodes(episodes: episodes)
     }
     
-    func loadCollection() {
+    func getCountEpisode() {
         view.countEpisode = interactor.episodeFromChar.count
     }
     
-    func configureViewCell(indexCell: Int) -> EpisodeCellModel {
+    func getEpisodeModelCell(indexCell: Int) -> EpisodeCellModel {
         
         var model = EpisodeCellModel(name: Resources.TitleView.EpisodesView.noneDataEpisode.rawValue,
                                      number: Resources.TitleView.EpisodesView.noneDataEpisode.rawValue,

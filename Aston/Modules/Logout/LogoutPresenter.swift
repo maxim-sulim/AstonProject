@@ -10,6 +10,7 @@ import Foundation
 
 protocol LogoutPresenterProtocol: AnyObject {
     func tapOut()
+    ///Переход на начальную сцену авторизации
     func authScene()
 }
 

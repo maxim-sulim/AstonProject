@@ -58,7 +58,9 @@ enum Resources {
             static let heightTableRow: CGFloat = 150
             static let countRowNoneData = 0
             static let boundsImageChar = (height: 90, widht: 90)
+            static let corRadius: CGFloat = 10
             static let reserveRows = 5
+            static let maxCountChars = 900
         }
         
         enum EpisodeView {

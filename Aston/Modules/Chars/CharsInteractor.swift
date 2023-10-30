@@ -9,6 +9,7 @@ import Foundation
 
 protocol CharsInteractorProtocol: AnyObject {
     var charsFromApi: [ResultChar] { get }
+    /// словарь idChar : ImageChar
     var imageChars: [Int:Data] { get }
     func loadImageChar(charUrl: String, indexCell: Int)
     func loadChars(countChars: Int)
@@ -50,7 +51,6 @@ final class CharsInteractor {
     lazy var cachedDataImageChar: NSCache<AnyObject, NSData> = {
         
         let cache = NSCache<AnyObject, NSData>()
-        
         return cache
         
     }()
@@ -82,8 +82,9 @@ extension CharsInteractor: CharsInteractorProtocol {
                         self.presenter.reloadTable()
                     }
                     
-                    if indexCell + Resources.LayoutView.CharsView.reserveRows ==
-                        self.charsFromApi.count && self.isLoadedChars == false {
+                    let saveCountRows = indexCell + Resources.LayoutView.CharsView.reserveRows
+                    
+                    if saveCountRows == self.charsFromApi.count && self.isLoadedChars == false {
                         
                         self.loadCharacters(urlCharacters: self.nextUrlChars)
                         self.isLoadedChars = true

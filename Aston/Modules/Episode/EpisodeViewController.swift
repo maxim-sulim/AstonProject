@@ -11,7 +11,9 @@ import SnapKit
 
 
 protocol EpisodeViewProtocol: AnyObject {
+    ///принимаем массив эпизодов выбраного чара от вызывающего модуля
     func configureView(episodes: [String])
+    ///количетсво загруженных эпизодов
     var countEpisode: Int { get set }
 }
 
@@ -77,12 +79,12 @@ extension EpisodeViewController: UICollectionViewDataSource {
         countEpisode
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EpisodeCollectionCell.description(), for: indexPath) as! EpisodeCollectionCell
         
-        cell.configureCell(model: presenter.configureViewCell(indexCell: indexPath.row))
+        cell.presenter = self.presenter
+        cell.indexCell = indexPath.row
         
         return cell
     }

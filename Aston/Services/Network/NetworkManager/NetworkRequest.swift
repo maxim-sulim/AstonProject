@@ -13,26 +13,27 @@ final class NetworkRequest {
     
     private init() {}
     
+    ///Выполняет запрос в сеть, проверяет валидность ссылки и возвращает ответ типа Result
     func request(stringUrl: String, complition: @escaping(Result<Data,Error>) -> Void){
         
         guard let url = URL(string: stringUrl) else {
             return
         }
         
-            URLSession.shared.dataTask(with: URLRequest(url: url)) { data, responce, error in
-                
-                    if let error = error {
-                        complition(.failure(error))
-                        return
-                    }
-                    guard let data = data else {
-                        return
-                    }
-                    
-                    DispatchQueue.main.async {
-                        complition(.success(data))
-                    }
-                
-            }.resume()
+        URLSession.shared.dataTask(with: URLRequest(url: url)) { data, responce, error in
+            
+            if let error = error {
+                complition(.failure(error))
+                return
+            }
+            guard let data = data else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                complition(.success(data))
+            }
+            
+        }.resume()
     }
 }

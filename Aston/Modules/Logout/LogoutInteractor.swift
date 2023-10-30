@@ -8,6 +8,7 @@
 import Foundation
 
 protocol LogoutInteractorProtocol: AnyObject {
+    ///Удаление авторизованного логина
     func deletelogin()
 }
 

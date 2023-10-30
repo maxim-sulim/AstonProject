@@ -8,8 +8,7 @@
 import Foundation
 
 
-// Модуель данных персонажа для вию ячейки
-
+/// Модель данных персонажа для вью ячейки
 struct ModelChar {
     var name: String
     var status: String

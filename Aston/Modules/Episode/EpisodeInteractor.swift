@@ -67,7 +67,7 @@ extension EpisodeInteractor {
                         self.episodeFromChar = self.sortedEpisodes(arrEpisode: &self.episodeFromChar)
                         
                         if i == episodeUrl.count - 1 {
-                            self.presenter.loadCollection()
+                            self.presenter.getCountEpisode()
                         }
                         
                     } else {

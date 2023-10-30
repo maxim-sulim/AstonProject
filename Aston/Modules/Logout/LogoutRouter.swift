@@ -9,6 +9,7 @@ import Foundation
 
 
 protocol LogoutRouterProtocol: AnyObject {
+    ///Переход на экран авторизации
     func presentAuthScene()
 }
 

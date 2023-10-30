@@ -30,15 +30,15 @@ final class CharsPresenter {
 extension CharsPresenter: CharsPresenterProtocol {
     
     func getModelViewCell(indexCell: Int) -> ModelChar {
-
-//устанавливаем дефолт значения
+        
+        //устанавливаем дефолт значения
         var model = ModelChar(name: Resources.TitleView.CharsView.noneDataChar,
                               status: Resources.TitleView.CharsView.noneDataChar,
                               gender: Resources.TitleView.CharsView.noneDataChar,
                               imageUrl: "",
                               image: Resources.TitleView.CharsView.nonDataImage)
-
-//если есть данные от сервера, устанавливаем их
+        
+        //если есть данные от сервера, устанавливаем их
         if let name = interactor.charsFromApi.saveObject(at: indexCell)?.name,
            let status = interactor.charsFromApi.saveObject(at: indexCell)?.status,
            let imageUrl = interactor.charsFromApi.saveObject(at: indexCell)?.image,
@@ -49,7 +49,7 @@ extension CharsPresenter: CharsPresenterProtocol {
             model.status = status
             model.gender = gender
             
-//проверяем кеш интероктора
+            //проверяем кеш интероктора
             if let data = interactor.cachedDataImageChar.object(forKey: indexCell as AnyObject) {
                 
                 model.image = data as Data
