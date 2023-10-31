@@ -8,10 +8,16 @@
 import UIKit
 
 enum Resources {
+    
+    enum ServiceName: String {
+        case serviceName = "AstonUser"
+    }
+    
     enum Color {
         static let blackBackGround = UIColor(hexString: "#040C1E")
         static let poisonousGreen = UIColor(hexString: "#47C60B")
         static let blackGrayBackGround = UIColor(hexString: "#262A38")
+        static let grayButtonInoutBackGround = UIColor(hexString: "#262A38").withAlphaComponent(0.5)
         static let backOriginGround = UIColor(hexString: "191C2A")
         static let infoLightGray = UIColor(hexString: "#C4C9CE")
         static let infoWhite = UIColor(hexString: "#FFF")
@@ -19,7 +25,8 @@ enum Resources {
     
     enum TitleView {
         enum AuthView: String {
-            case titleButton = "Sign In"
+            case titleButtonDef = "Sign In"
+            case titleButtonEnter = "Enter"
             case titleLabelLogin = "Login"
             case titleLabelPassword = "Password"
             case placeholderLogin = "Enter your login"
@@ -43,6 +50,14 @@ enum Resources {
             case titleLabelNumber = "Number Episode"
             case titleLabelName = "Name Episode"
             case titleLabelDate = "Date Episode"
+        }
+        
+        enum LogoutView {
+            static let outButton = (title: "Exit", subtitle: "Delete my login")
+            static let editButton = (title: "Edit", subtitle: "Password")
+            static let alertEditPassword = (title: "Edit passwort",
+                                            message: "Enter a new password",
+                                            placeholderTextField: "New password")
         }
     }
     

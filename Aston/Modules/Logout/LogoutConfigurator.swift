@@ -13,7 +13,6 @@ protocol LogoutConfiguratorProtocol {
 
 final class LogoutConfigurator: LogoutConfiguratorProtocol {
     
-    
     func configure(with viewController: LogoutViewController) {
         
         let presenter = LogoutPresenter(view: viewController)

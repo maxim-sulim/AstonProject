@@ -9,19 +9,23 @@ import Foundation
 
 
 protocol UserStorageProtocol {
+    ///Была ли авторизация в этой сессии
+    var isActualAuth: Bool { get set }
     ///Проверяет авторизацию пользователя по логину
     func isAuthLogin(login: String) -> Bool
     ///Добавляет логин пользователя в хранилище
     func addLoginAuth(login: String)
     ///Удаление логина из хранилища
-    func outLoginAuth(login: String)
+    func deleteLoginAuth(login: String)
     ///Возвращает последний добавленый логин в хранилище
     func returnLastLogin() -> String
+    
+    func deleteFullLogins()
 }
 
 final class UserStorage: UserStorageProtocol {
     
-     var storage = UserDefaults.standard
+    var storage = UserDefaults.standard
     
     private let storageKey = "user"
     
@@ -29,6 +33,8 @@ final class UserStorage: UserStorageProtocol {
         case login
     }
 
+    var isActualAuth = false
+    
     func isAuthLogin(login: String) -> Bool {
         
         let userFromStorage = storage.object(forKey: storageKey) as? [String:String] ?? [:]
@@ -52,7 +58,7 @@ final class UserStorage: UserStorageProtocol {
         storage.set(user, forKey: storageKey)
     }
     
-    func outLoginAuth(login: String) {
+    func deleteLoginAuth(login: String) {
         
         let userFromStorage = storage.object(forKey: storageKey) as? [String:String] ?? [:]
         var logins = [String:String]()
@@ -89,5 +95,7 @@ final class UserStorage: UserStorageProtocol {
         return login
     }
     
-    
+    func deleteFullLogins() {
+        storage.removeObject(forKey: storageKey)
+    }
 }

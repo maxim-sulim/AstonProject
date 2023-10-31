@@ -8,8 +8,9 @@
 import Foundation
 
 protocol AuthInteractorProtocol {
+    func isAuthLog() -> Bool
     func authSignIn(user: UserProtocol)
-    var isLoaded: Bool { get }
+    func isLoaded(user: UserProtocol) -> Bool
 }
 
 final class AuthInteractor {
@@ -21,13 +22,14 @@ final class AuthInteractor {
         self.presenter = presenter
     }
     
-    private let serviceName = "AstonUser"
+    private let serviceName = Resources.ServiceName.serviceName.rawValue
     
     private func authUser(login: String, password: String) throws {
         
         try KeychainPasswordItem(service: serviceName, account: login).savePassword(password)
         
         storage.addLoginAuth(login: login)
+        
     }
     
 }
@@ -36,11 +38,16 @@ final class AuthInteractor {
 
 extension AuthInteractor: AuthInteractorProtocol {
     
+    func isAuthLog() -> Bool {
+        return storage.isActualAuth
+    }
+    
     func authSignIn(user: UserProtocol) {
         //проверка валидности пароля
         
         do {
             try authUser(login: user.login, password: user.password)
+            storage.isActualAuth = true
             presenter.closeAuth()
         } catch {
             print("Error \(error.localizedDescription)")
@@ -48,14 +55,15 @@ extension AuthInteractor: AuthInteractorProtocol {
         
     }
     
-    var isLoaded: Bool {
+    func isLoaded(user: UserProtocol) -> Bool {
         
-        let login = storage.returnLastLogin()
+        let login = user.login
         
         do {
             
             let password = try KeychainPasswordItem(service: serviceName, account: login).readPassword()
-            return password.count > 0
+            
+            return password == user.password ? true : false
             
         } catch {
             return false

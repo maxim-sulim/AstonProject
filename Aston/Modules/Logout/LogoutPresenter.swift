@@ -9,9 +9,14 @@ import Foundation
 
 
 protocol LogoutPresenterProtocol: AnyObject {
-    func tapOut()
-    ///Переход на начальную сцену авторизации
-    func authScene()
+    ///Выход на сцену авторизации
+    func exitMainFlow()
+    ///Изменение пароля авторизированного логина
+    func tapEditbutton()
+    ///Показывает окно ввода нового пароля
+    func alertNewPassword()
+    ///Сохраняет новый пароль
+    func enterNewPassword(password: String)
 }
 
 
@@ -30,11 +35,23 @@ final class LogoutPresenter {
 
 extension LogoutPresenter: LogoutPresenterProtocol {
     
-    func tapOut() {
-        interactor.deletelogin()
+    func enterNewPassword(password: String) {
+        
+        guard password.count > 0  else { return }
+        
+        interactor.setNewPassword(password: password)
     }
     
-    func authScene() {
+    func alertNewPassword() {
+        view.alertEditPassword()
+    }
+    
+    func tapEditbutton() {
+        interactor.deleteActualPassword()
+    }
+    
+    func exitMainFlow() {
+        interactor.closeAutoOpen()
         router.presentAuthScene()
     }
 }

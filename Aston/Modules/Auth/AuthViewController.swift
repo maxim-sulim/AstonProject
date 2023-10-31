@@ -64,21 +64,53 @@ final class AuthViewController: UIViewController, AuthViewProtocol {
     
     lazy private var mainContainer: UIView = {
         let view = UIView()
-        view.backgroundColor = Resources.Color.blackGrayBackGround
+        
+        if autOrRegSwich.isOn {
+            
+            view.backgroundColor = Resources.Color.grayButtonInoutBackGround
+        } else {
+            
+            view.backgroundColor = Resources.Color.blackGrayBackGround
+        }
+        
         view.layer.cornerRadius = Resources.LayoutView.AuthView.corRadiusMain
         return view
     }()
     
-    private let buttonSignIn: UIButton = {
+    lazy private var buttonSignIn: UIButton = {
         
         let button = UIButton()
         
         button.backgroundColor = .clear
         button.tintColor = .white
-        button.setTitle(Resources.TitleView.AuthView.titleButton.rawValue, for: .normal)
+        
+        if autOrRegSwich.isOn {
+            
+            button.setTitle(Resources.TitleView.AuthView.titleButtonEnter.rawValue, for: .normal)
+        } else {
+
+            button.setTitle(Resources.TitleView.AuthView.titleButtonDef.rawValue, for: .normal)
+        }
+        
         button.addTarget(nil, action: #selector(actionButton), for: .touchUpInside)
         
         return button
+    }()
+    
+    //если пользователь попадает на экран авторизации из mainFlow, свич будет активирован, тк у пользователя есть логин и пароль.
+    lazy private var autOrRegSwich: UISwitch = {
+        let swith = UISwitch()
+        
+        if presenter.isAuth {
+            
+            swith.isOn = false
+        } else {
+            
+            swith.isOn = true
+        }
+        
+        swith.addTarget(nil, action: #selector(tapSwith), for: .touchUpInside)
+        return swith
     }()
     
     private func getTextField() -> UITextField {
@@ -103,6 +135,7 @@ final class AuthViewController: UIViewController, AuthViewProtocol {
     lazy private var passwordTextField: UITextField = {
         let textField = getTextField()
         textField.placeholder = Resources.TitleView.AuthView.placeholderPassword.rawValue
+        textField.isSecureTextEntry = true
         textField.delegate = self
         textField.tag = TextFieldTags.password.rawValue
         return textField
@@ -136,16 +169,27 @@ final class AuthViewController: UIViewController, AuthViewProtocol {
         let loginLabel = getLabel()
         loginLabel.text = Resources.TitleView.AuthView.titleLabelLogin.rawValue
         
+        let xStack = UIStackView()
+        xStack.axis = .horizontal
+        xStack.distribution = .equalSpacing
+        xStack.spacing = 20
+        xStack.addArrangedSubview(loginLabel)
+        xStack.addArrangedSubview(autOrRegSwich)
+        
         let passwordLabel = getLabel()
         passwordLabel.text = Resources.TitleView.AuthView.titleLabelPassword.rawValue
         
-        yStack.addArrangedSubview(loginLabel)
+        yStack.addArrangedSubview(xStack)
         yStack.addArrangedSubview(loginTextField)
         yStack.addArrangedSubview(passwordLabel)
         yStack.addArrangedSubview(passwordTextField)
         
         mainContainer.addSubview(yStack)
         mainContainer.addSubview(buttonSignIn)
+        
+        xStack.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(mainContainer).inset(16)
+        }
         
         yStack.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview().inset(16)
@@ -167,8 +211,31 @@ final class AuthViewController: UIViewController, AuthViewProtocol {
     }
     
     @objc private func actionButton() {
-        view.endEditing(true)
-        presenter.signIn()
+        
+        if self.autOrRegSwich.isOn {
+            
+            presenter.enterUser()
+            
+        } else {
+            view.endEditing(true)
+            presenter.signIn()
+        }
+    }
+    
+    @objc private func tapSwith() {
+        
+        UIView.animate(withDuration: 0.1, delay: 0.1) {
+            if self.autOrRegSwich.isOn {
+                
+                self.buttonSignIn.setTitle(Resources.TitleView.AuthView.titleButtonEnter.rawValue, for: .normal)
+                self.mainContainer.backgroundColor = Resources.Color.grayButtonInoutBackGround
+            } else {
+                
+                self.buttonSignIn.setTitle(Resources.TitleView.AuthView.titleButtonDef.rawValue, for: .normal)
+                self.mainContainer.backgroundColor = Resources.Color.blackGrayBackGround
+            }
+            
+        }
     }
     
 }
@@ -185,7 +252,7 @@ extension AuthViewController: UITextFieldDelegate {
         case TextFieldTags.login.rawValue:
             return passwordTextField.becomeFirstResponder()
         case TextFieldTags.password.rawValue:
-            presenter.signIn()
+            self.actionButton()
         default:
             return false
         }
