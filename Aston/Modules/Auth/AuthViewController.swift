@@ -11,9 +11,11 @@ import SnapKit
 protocol AuthViewProtocol: AnyObject {
     func getloginUser() -> String?
     func getPassswordUser() -> String?
+    func alertErrorUserLife()
+    func alertErrorNotPassword()
 }
 
-final class AuthViewController: UIViewController, AuthViewProtocol {
+final class AuthViewController: UIViewController {
     
     var presenter: AuthPresenterProtocol!
     let configurator: AuthConfiguratorProtocol = AuthConfigurator()
@@ -34,24 +36,12 @@ final class AuthViewController: UIViewController, AuthViewProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
 //MARK: - enum TextField
     
     private enum TextFieldTags: Int {
         case login
         case password
     }
-    
-//MARK: - protocol method
-
-    func getloginUser() -> String? {
-        self.loginTextField.text
-    }
-    
-    func getPassswordUser() -> String? {
-        self.passwordTextField.text
-    }
-    
     
 //MARK: - private methods
     
@@ -97,16 +87,16 @@ final class AuthViewController: UIViewController, AuthViewProtocol {
         return button
     }()
     
-    //если пользователь попадает на экран авторизации из mainFlow, свич будет активирован, тк у пользователя есть логин и пароль.
+    /// Если пользователь попадает на экран авторизации из mainFlow, свич будет активирован, тк у пользователя есть логин и пароль(Если он его не удалял).
     lazy private var autOrRegSwich: UISwitch = {
         let swith = UISwitch()
         
         if presenter.isAuth {
             
-            swith.isOn = false
+            swith.isOn = true
         } else {
             
-            swith.isOn = true
+            swith.isOn = false
         }
         
         swith.addTarget(nil, action: #selector(tapSwith), for: .touchUpInside)
@@ -144,15 +134,28 @@ final class AuthViewController: UIViewController, AuthViewProtocol {
     private func getLabel() -> UILabel {
         
         let label = UILabel()
-        label.textColor = Resources.Color.poisonousGreen
+        label.textColor = Resources.Color.lightPoisonousGreen
         let font = UIFont.systemFont(ofSize: 18)
         label.font = font
         return label
     }
     
+    lazy var titleLabel: UILabel = {
+        let label = getLabel()
+        label.textColor = Resources.Color.poisonousGreen
+        
+        if self.autOrRegSwich.isOn {
+            label.text = "Authorization"
+        } else {
+            label.text = "Registration"
+        }
+        
+        return label
+    }()
     
     private func setupContainer() {
         self.view.addSubview(mainContainer)
+        self.view.addSubview(titleLabel)
         
         mainContainer.snp.makeConstraints { make in
             make.centerY.centerX.equalToSuperview()
@@ -208,6 +211,11 @@ final class AuthViewController: UIViewController, AuthViewProtocol {
             make.bottom.equalToSuperview().inset(8)
             make.height.equalTo(Resources.LayoutView.AuthView.heightButtonSignIn)
         }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(mainContainer.snp_topMargin).inset(-16)
+        }
     }
     
     @objc private func actionButton() {
@@ -229,15 +237,51 @@ final class AuthViewController: UIViewController, AuthViewProtocol {
                 
                 self.buttonSignIn.setTitle(Resources.TitleView.AuthView.titleButtonEnter.rawValue, for: .normal)
                 self.mainContainer.backgroundColor = Resources.Color.grayButtonInoutBackGround
+                self.titleLabel.text = Resources.TitleView.AuthView.titleAuthorization.rawValue
             } else {
                 
                 self.buttonSignIn.setTitle(Resources.TitleView.AuthView.titleButtonDef.rawValue, for: .normal)
                 self.mainContainer.backgroundColor = Resources.Color.blackGrayBackGround
+                self.titleLabel.text = Resources.TitleView.AuthView.titleRegistration.rawValue
             }
-            
         }
     }
     
+}
+
+extension AuthViewController: AuthViewProtocol {
+    
+    //MARK: - protocol method
+    
+    func getloginUser() -> String? {
+        self.loginTextField.text
+    }
+    
+    func getPassswordUser() -> String? {
+        self.passwordTextField.text
+    }
+    
+    func alertErrorUserLife() {
+        presentAlert(title: Resources.TitleView.AuthView.AlertError.alertUserLife.title,
+                     message: Resources.TitleView.AuthView.AlertError.alertUserLife.message)
+    }
+    
+    func alertErrorNotPassword() {
+        presentAlert(title: Resources.TitleView.AuthView.AlertError.alertNotPassword.title,
+                     message: Resources.TitleView.AuthView.AlertError.alertNotPassword.message)
+    }
+    
+    private func presentAlert(title: String, message: String) {
+        
+        let errorAlert = UIAlertController(title: title,
+                                           message: message,
+                                           preferredStyle: .alert)
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        errorAlert.addAction(cancel)
+        self.present(errorAlert,animated: true)
+    }
 }
 
 extension AuthViewController: UITextFieldDelegate {

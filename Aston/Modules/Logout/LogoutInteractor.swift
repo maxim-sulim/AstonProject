@@ -10,8 +10,8 @@ import Foundation
 protocol LogoutInteractorProtocol: AnyObject {
     ///Актуальный пользователь переходит на экран авторизаци, но сохраняет возможность автоматического входа
     func closeAutoOpen()
-    ///Удаление актуального пароля
-    func deleteActualPassword()
+    
+    func deleteLogin()
     ///Установка нового пароля
     func setNewPassword(password: String)
 }
@@ -30,35 +30,40 @@ final class LogoutInteractor {
 
 extension LogoutInteractor: LogoutInteractorProtocol {
  
+    func deleteLogin() {
+        storage.deleteUserAuth()
+        storage.deleteFullLogins()
+    }
+    
     func closeAutoOpen() {
-        storage.isActualAuth = false
+        storage.exitGlobalAuth()
     }
     
     func setNewPassword(password: String) {
-        let login = storage.returnLastLogin()
         
-        do {
-            try savePassword(login: login, password: password)
+        if let login = storage.getActualLogin() {
             
-        } catch {
-            //alert
+            do {
+                deleteActualPassword(login: login)
+                
+                try savePassword(login: login, password: password)
+                
+            } catch {
+                //alert
+            }
         }
+        
     }
     
-    func deleteActualPassword() {
-        
-        let login = storage.returnLastLogin()
+    private func deleteActualPassword(login: String) {
         
         do {
             
             try KeychainPasswordItem(service: serviceName, account: login).deleteItem()
             
-            presenter.alertNewPassword()
-            
         } catch {
             //alert ошибка удаления пароля
         }
-        
     }
     
     private func savePassword(login: String, password: String) throws {

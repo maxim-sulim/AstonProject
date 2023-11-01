@@ -9,12 +9,12 @@ import Foundation
 
 
 protocol LogoutPresenterProtocol: AnyObject {
-    ///Выход на сцену авторизации
-    func exitMainFlow()
+    ///Выход на сцену авторизации без сохранения пароля
+    func exitMainFlowDeleteLogin()
+    ///Выход на сцену авторизации c сохранением пароля
+    func exitMainFlowSaveLogin()
     ///Изменение пароля авторизированного логина
     func tapEditbutton()
-    ///Показывает окно ввода нового пароля
-    func alertNewPassword()
     ///Сохраняет новый пароль
     func enterNewPassword(password: String)
 }
@@ -42,16 +42,17 @@ extension LogoutPresenter: LogoutPresenterProtocol {
         interactor.setNewPassword(password: password)
     }
     
-    func alertNewPassword() {
+    func tapEditbutton() {
         view.alertEditPassword()
     }
     
-    func tapEditbutton() {
-        interactor.deleteActualPassword()
+    func exitMainFlowSaveLogin() {
+        interactor.closeAutoOpen()
+        router.presentAuthScene()
     }
     
-    func exitMainFlow() {
-        interactor.closeAutoOpen()
+    func exitMainFlowDeleteLogin(){
+        interactor.deleteLogin()
         router.presentAuthScene()
     }
 }

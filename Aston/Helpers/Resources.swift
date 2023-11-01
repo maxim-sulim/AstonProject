@@ -16,6 +16,7 @@ enum Resources {
     enum Color {
         static let blackBackGround = UIColor(hexString: "#040C1E")
         static let poisonousGreen = UIColor(hexString: "#47C60B")
+        static let lightPoisonousGreen = UIColor(hexString: "#47C60B").withAlphaComponent(0.7)
         static let blackGrayBackGround = UIColor(hexString: "#262A38")
         static let grayButtonInoutBackGround = UIColor(hexString: "#262A38").withAlphaComponent(0.5)
         static let backOriginGround = UIColor(hexString: "191C2A")
@@ -24,6 +25,7 @@ enum Resources {
     }
     
     enum TitleView {
+        
         enum AuthView: String {
             case titleButtonDef = "Sign In"
             case titleButtonEnter = "Enter"
@@ -31,6 +33,13 @@ enum Resources {
             case titleLabelPassword = "Password"
             case placeholderLogin = "Enter your login"
             case placeholderPassword = "Enter your password"
+            case titleRegistration = "Registration"
+            case titleAuthorization = "Authorization"
+            
+            enum AlertError {
+                static let alertUserLife = (title: "Error", message: "This user exists")
+                static let alertNotPassword = (title: "Error", message: "Invalid password")
+            }
         }
         
         enum TabBarItemTitle: String {
@@ -53,7 +62,7 @@ enum Resources {
         }
         
         enum LogoutView {
-            static let outButton = (title: "Exit", subtitle: "Delete my login")
+            static let outButton = (title: "Exit", subtitle: "Authorization screen")
             static let editButton = (title: "Edit", subtitle: "Password")
             static let alertEditPassword = (title: "Edit passwort",
                                             message: "Enter a new password",

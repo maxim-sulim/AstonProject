@@ -17,6 +17,8 @@ protocol AuthPresenterProtocol: AnyObject {
     func enterUser()
     
     var isAuth: Bool { get set }
+    
+    func errorUserLife()
 }
 
 final class AuthPresenter {
@@ -37,6 +39,10 @@ final class AuthPresenter {
 
 extension AuthPresenter: AuthPresenterProtocol {
     
+    func errorUserLife() {
+        view.alertErrorUserLife()
+    }
+    
     func enterUser() {
         
         guard let login = view.getloginUser(), login.count > 0 else {
@@ -55,7 +61,7 @@ extension AuthPresenter: AuthPresenterProtocol {
             
         } else {
             
-            //view Alert not password or login base
+            view.alertErrorNotPassword()
         }
     }
     

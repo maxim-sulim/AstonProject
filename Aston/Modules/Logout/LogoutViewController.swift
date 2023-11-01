@@ -91,7 +91,7 @@ final class LogoutViewController: UIViewController {
     }
     
     @objc private func tapOut() {
-        presenter.exitMainFlow()
+       alertLogin()
     }
     
     @objc private func editPassword() {
@@ -103,10 +103,10 @@ final class LogoutViewController: UIViewController {
 extension LogoutViewController: LogoutViewProtocol {
     
     func alertEditPassword() {
-        alertPassword()
+        presentAlertPassword()
     }
     
-    private func alertPassword() {
+    private func presentAlertPassword() {
         
         let editPassword = UIAlertController(title: Resources.TitleView.LogoutView.alertEditPassword.title,
                                              message: Resources.TitleView.LogoutView.alertEditPassword.message,
@@ -127,6 +127,28 @@ extension LogoutViewController: LogoutViewProtocol {
         
         
         self.present(editPassword, animated: true)
+    }
+    
+    private func alertLogin() {
+        
+        let login = UIAlertController(title: "Exit",
+                                             message: "Exit and save login?",
+                                             preferredStyle: .alert)
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let saveLogin = UIAlertAction(title: "Save", style: .default) { [self] enter in
+            self.presenter.exitMainFlowSaveLogin()
+        }
+        
+        let deleteLogin = UIAlertAction(title: "Delete login", style: .destructive) { [self] enter in
+            self.presenter.exitMainFlowDeleteLogin()
+        }
+        
+        login.addAction(cancel)
+        login.addAction(saveLogin)
+        login.addAction(deleteLogin)
+        
+        self.present(login, animated: true)
     }
     
 }

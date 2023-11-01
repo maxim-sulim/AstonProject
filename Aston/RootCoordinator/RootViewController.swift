@@ -24,9 +24,7 @@ final class RootViewController: UIViewController {
     
     lazy var isSignIn: Bool = {
         
-        let lastLogin = storage.returnLastLogin()
-        return storage.isAuthLogin(login: lastLogin)
-        
+        return storage.isAuthorizationLogin()
     }()
     
     override func viewDidLoad() {
@@ -103,7 +101,6 @@ extension RootViewController: RootViewControllerProtocol {
         currentVc.view.removeFromSuperview()
         currentVc.removeFromParent()
         currentVc = new
-        
     }
     
     func swithToMainScreen() {

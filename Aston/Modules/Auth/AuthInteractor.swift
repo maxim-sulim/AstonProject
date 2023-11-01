@@ -29,30 +29,31 @@ final class AuthInteractor {
         try KeychainPasswordItem(service: serviceName, account: login).savePassword(password)
         
         storage.addLoginAuth(login: login)
-        
     }
     
 }
 
-
-
 extension AuthInteractor: AuthInteractorProtocol {
     
     func isAuthLog() -> Bool {
-        return storage.isActualAuth
+        return storage.isActualLogin()
     }
     
     func authSignIn(user: UserProtocol) {
-        //проверка валидности пароля
+        
+        //проверка на существующего юзера
+        guard !storage.isLogin(login: user.login) else {
+            presenter.errorUserLife()
+            return
+        }
         
         do {
             try authUser(login: user.login, password: user.password)
-            storage.isActualAuth = true
+            
             presenter.closeAuth()
         } catch {
             print("Error \(error.localizedDescription)")
         }
-        
     }
     
     func isLoaded(user: UserProtocol) -> Bool {
