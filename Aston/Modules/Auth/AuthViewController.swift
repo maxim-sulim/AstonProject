@@ -145,9 +145,9 @@ final class AuthViewController: UIViewController {
         label.textColor = Resources.Color.poisonousGreen
         
         if self.autOrRegSwich.isOn {
-            label.text = "Authorization"
+            label.text = Resources.TitleView.AuthView.titleAuthorization.rawValue
         } else {
-            label.text = "Registration"
+            label.text = Resources.TitleView.AuthView.titleRegistration.rawValue
         }
         
         return label

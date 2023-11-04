@@ -77,8 +77,8 @@ extension CharsPresenter: CharsPresenterProtocol {
     }
     
     func showEpisodeScene(indexCell: Int) {
-        let episodeUrl = interactor.charsFromApi[indexCell].episode
-        router.showEpisodeScene(episodes: episodeUrl)
+        let episodeUrl = interactor.charsFromApi.saveObject(at: indexCell)?.episode
+        router.showEpisodeScene(episodes: episodeUrl ?? [])
     }
     
     func reloadTable() {
