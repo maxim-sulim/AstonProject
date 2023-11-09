@@ -24,6 +24,11 @@ final class LogoutViewController: UIViewController {
         setupView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationBarSetup()
+    }
+    
     init(rootCoordinator: RootCoordinatorProtocol) {
         self.rootCoordinator = rootCoordinator
         super.init(nibName: nil, bundle: nil)
@@ -39,6 +44,7 @@ final class LogoutViewController: UIViewController {
         button.addTarget(nil, action: #selector(tapOut), for: .touchUpInside)
         button.configuration?.title = Resources.TitleView.LogoutView.outButton.title
         button.configuration?.subtitle = Resources.TitleView.LogoutView.outButton.subtitle
+        button.accessibilityIdentifier = "ExitBut"
         return button
     }()
     
@@ -48,6 +54,7 @@ final class LogoutViewController: UIViewController {
         button.addTarget(nil, action: #selector(editPassword), for: .touchUpInside)
         button.configuration?.title = Resources.TitleView.LogoutView.editButton.title
         button.configuration?.subtitle = Resources.TitleView.LogoutView.editButton.subtitle
+        button.accessibilityIdentifier = "EditBut"
         return button
     }()
     
@@ -71,6 +78,13 @@ final class LogoutViewController: UIViewController {
     
     private func setupView() {
         makeConstraint()
+    }
+    
+    private func navigationBarSetup() {
+        navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.white
+            ]
+        navigationItem.title = Resources.TitleView.LogoutView.title
     }
     
     private func makeConstraint() {
@@ -120,6 +134,7 @@ extension LogoutViewController: LogoutViewProtocol {
         editPassword.addTextField() { password in
             password.placeholder = Resources.TitleView.LogoutView.alertEditPassword.placeholderTextField
             password.isSecureTextEntry = true
+            password.accessibilityIdentifier = "EditPasswordTF"
         }
         
         editPassword.addAction(cancel)
@@ -131,7 +146,7 @@ extension LogoutViewController: LogoutViewProtocol {
     
     private func alertLogin() {
         
-        let login = UIAlertController(title: "Exit",
+        let login = UIAlertController(title: "Leave authorization",
                                              message: "Exit and save login?",
                                              preferredStyle: .alert)
         

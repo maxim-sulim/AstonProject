@@ -8,6 +8,7 @@
 
 import Foundation
 
+///Wrapper keychain
 struct KeychainPasswordItem {
   // MARK: Types
   

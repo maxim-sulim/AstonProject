@@ -13,6 +13,7 @@ protocol AuthViewProtocol: AnyObject {
     func getPassswordUser() -> String?
     func alertErrorUserLife()
     func alertErrorNotPassword()
+    func alertErrorInvalidePassword()
 }
 
 final class AuthViewController: UIViewController {
@@ -119,6 +120,8 @@ final class AuthViewController: UIViewController {
         textField.placeholder = Resources.TitleView.AuthView.placeholderLogin.rawValue
         textField.delegate = self
         textField.tag = TextFieldTags.login.rawValue
+        textField.returnKeyType = .next
+        textField.accessibilityIdentifier = "LoginTF"
         return textField
     }()
     
@@ -128,6 +131,8 @@ final class AuthViewController: UIViewController {
         textField.isSecureTextEntry = true
         textField.delegate = self
         textField.tag = TextFieldTags.password.rawValue
+        textField.returnKeyType = .done
+        textField.accessibilityIdentifier = "PasswordTF"
         return textField
     }()
     
@@ -269,6 +274,11 @@ extension AuthViewController: AuthViewProtocol {
     func alertErrorNotPassword() {
         presentAlert(title: Resources.TitleView.AuthView.AlertError.alertNotPassword.title,
                      message: Resources.TitleView.AuthView.AlertError.alertNotPassword.message)
+    }
+    
+    func alertErrorInvalidePassword() {
+        presentAlert(title: Resources.TitleView.AuthView.AlertError.alertInvalidPassword.title,
+                     message: Resources.TitleView.AuthView.AlertError.alertInvalidPassword.title)
     }
     
     private func presentAlert(title: String, message: String) {

@@ -76,7 +76,8 @@ extension AuthPresenter: AuthPresenterProtocol {
             return
         }
         
-        guard let paswword = view.getPassswordUser(), paswword.count > 0 else {
+        guard let paswword = view.getPassswordUser(), paswword.count > 1 else {
+            view.alertErrorInvalidePassword()
             return
         }
         

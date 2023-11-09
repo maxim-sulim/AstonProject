@@ -39,12 +39,15 @@ enum Resources {
             enum AlertError {
                 static let alertUserLife = (title: "Error", message: "This user exists")
                 static let alertNotPassword = (title: "Error", message: "Invalid password")
+                static let alertInvalidPassword = (title: "Invalid password", message: "Enter the correct password")
             }
         }
         
         enum TabBarItemTitle: String {
             case chars = "Characters"
-            case logout = "Logout"
+            case logout = "General"
+            case systemNameFitstItem = "person.2.circle.fill"
+            case systemNameTwoItem = "gearshape.fill"
         }
         
         enum CharsView {
@@ -62,6 +65,7 @@ enum Resources {
         }
         
         enum LogoutView {
+            static let title = "General"
             static let outButton = (title: "Exit", subtitle: "Authorization screen")
             static let editButton = (title: "Edit", subtitle: "Password")
             static let alertEditPassword = (title: "Edit passwort",

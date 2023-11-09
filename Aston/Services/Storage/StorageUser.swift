@@ -13,7 +13,7 @@ protocol UserStorageProtocol {
     func isAuthorizationLogin() -> Bool
     ///Проверяет, зарегестрирован ли актуальный логин пользователя, чтобы отображать на экране авторизации
     func isActualLogin() -> Bool
-    ///Проверка авторизации
+    ///Проверка наличия логина в хранилище
     func isLogin(login: String) -> Bool
     ///Добавляет логин пользователя в хранилище
     func addLoginAuth(login: String)
@@ -29,7 +29,8 @@ protocol UserStorageProtocol {
 ///Хранилище хранит словарь с двумя доступными ключами:
 final class UserStorage: UserStorageProtocol {
     
-    private var storage = UserDefaults.standard
+    //Публичный, для подмены на мок на время тестов
+    var storage = UserDefaults.standard
     private let serviceName = Resources.ServiceName.serviceName.rawValue
     
     ///Ключ для хранилища логинов пользователей
@@ -106,8 +107,6 @@ final class UserStorage: UserStorageProtocol {
         if !userFromStorage.isEmpty {
             storage.set(userFromStorage, forKey: userKey)
         }
-        
-        
     }
     
     func deleteFullLogins() {
