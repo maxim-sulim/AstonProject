@@ -78,6 +78,7 @@ final class RootViewController: UIViewController {
         transition(from: currentVc, to: new, duration: 0.3, animations: {
             
         }) { completed in
+            
             self.currentVc.removeFromParent()
             new.didMove(toParent: self)
             self.currentVc = new

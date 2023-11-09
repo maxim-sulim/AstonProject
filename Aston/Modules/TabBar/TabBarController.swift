@@ -43,8 +43,8 @@ final class TabBarController: UITabBarController {
         let charsNavigation = UINavigationController(rootViewController: charsController)
         let logotNavigation = UINavigationController(rootViewController: logoutController)
         
-        let imageChars = UIImage.init(systemName: "person.2.circle.fill")
-        let imageOut = UIImage.init(systemName: "delete.left.fill")
+        let imageChars = UIImage.init(systemName: Resources.TitleView.TabBarItemTitle.systemNameFitstItem.rawValue)
+        let imageOut = UIImage.init(systemName: Resources.TitleView.TabBarItemTitle.systemNameTwoItem.rawValue)
         
         charsNavigation.tabBarItem = UITabBarItem(title: Resources.TitleView.TabBarItemTitle.chars.rawValue,
                                                   image: imageChars,
@@ -52,7 +52,9 @@ final class TabBarController: UITabBarController {
         
         logotNavigation.tabBarItem = UITabBarItem(title: Resources.TitleView.TabBarItemTitle.logout.rawValue,
                                                    image: imageOut,
-                                                   tag: TabItem.logout.rawValue)
+                                                   tag: TabItem.logout.rawValue )
+        
+        logotNavigation.tabBarItem.accessibilityIdentifier = "TabLogout"
         
         setViewControllers([
             charsNavigation,
