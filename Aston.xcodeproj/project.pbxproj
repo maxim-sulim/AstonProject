@@ -1,0 +1,943 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02A93505AE5AB9D7360C82EA /* Pods_Aston.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3AFF5916FFD4692B89AC93 /* Pods_Aston.framework */; };
+		AB0CD6542AF0002C0086413D /* AuthEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CD6532AF0002C0086413D /* AuthEntity.swift */; };
+		AB2CD9FD2AE9605300FA2F5A /* CharsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2CD9FC2AE9605300FA2F5A /* CharsEntity.swift */; };
+		AB2CD9FF2AE960D000FA2F5A /* EpisodeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2CD9FE2AE960D000FA2F5A /* EpisodeEntity.swift */; };
+		AB5DC88A2AFBD06E00BEBA63 /* AstonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5DC8892AFBD06E00BEBA63 /* AstonUITests.swift */; };
+		AB5DC88C2AFBD06E00BEBA63 /* AstonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5DC88B2AFBD06E00BEBA63 /* AstonUITestsLaunchTests.swift */; };
+		AB6FEB692AD8023300A44DD2 /* CharsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6FEB682AD8023300A44DD2 /* CharsConfigurator.swift */; };
+		AB6FEB6B2AD8023E00A44DD2 /* CharsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6FEB6A2AD8023E00A44DD2 /* CharsPresenter.swift */; };
+		AB6FEB6D2AD8024C00A44DD2 /* CharsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6FEB6C2AD8024C00A44DD2 /* CharsRouter.swift */; };
+		AB6FEB6F2AD8042E00A44DD2 /* CharsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6FEB6E2AD8042E00A44DD2 /* CharsInteractor.swift */; };
+		AB6FEB752AD8133F00A44DD2 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6FEB742AD8133F00A44DD2 /* NetworkModel.swift */; };
+		AB6FEB772AD8139800A44DD2 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6FEB762AD8139800A44DD2 /* NetworkRequest.swift */; };
+		AB6FEB792AD813A400A44DD2 /* NetworkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6FEB782AD813A400A44DD2 /* NetworkData.swift */; };
+		AB6FEB7C2AD824E800A44DD2 /* Collection + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6FEB7B2AD824E800A44DD2 /* Collection + ext.swift */; };
+		AB6FEB7F2AD9C76600A44DD2 /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6FEB7E2AD9C76600A44DD2 /* EpisodeViewController.swift */; };
+		AB6FEB812AD9C77500A44DD2 /* EpisodePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6FEB802AD9C77500A44DD2 /* EpisodePresenter.swift */; };
+		AB6FEB832AD9C78200A44DD2 /* EpisodeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6FEB822AD9C78200A44DD2 /* EpisodeInteractor.swift */; };
+		AB6FEB852AD9C78F00A44DD2 /* EpisodeConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6FEB842AD9C78F00A44DD2 /* EpisodeConfigurator.swift */; };
+		AB6FEB872AD9C79A00A44DD2 /* EpisodeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6FEB862AD9C79A00A44DD2 /* EpisodeRouter.swift */; };
+		AB6FEB892ADAA87200A44DD2 /* EpisodeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6FEB882ADAA87200A44DD2 /* EpisodeCollectionCell.swift */; };
+		ABB6D22D2AD45B1700276587 /* AuthConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB6D22C2AD45B1700276587 /* AuthConfigurator.swift */; };
+		ABB6D22F2AD45BC000276587 /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB6D22E2AD45BC000276587 /* AuthPresenter.swift */; };
+		ABB6D2312AD45D4700276587 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB6D2302AD45D4700276587 /* AuthRouter.swift */; };
+		ABB6D2332AD45F6C00276587 /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB6D2322AD45F6C00276587 /* AuthInteractor.swift */; };
+		ABB6D2362AD5820E00276587 /* CharsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB6D2352AD5820E00276587 /* CharsViewController.swift */; };
+		ABB6D2392AD5875400276587 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB6D2382AD5875400276587 /* TabBarController.swift */; };
+		ABB6D23C2AD5C29600276587 /* CharsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB6D23B2AD5C29600276587 /* CharsTableViewCell.swift */; };
+		ABBE47C92ADFDC0100AAC1E2 /* StorageUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBE47C82ADFDC0100AAC1E2 /* StorageUser.swift */; };
+		ABBE47CC2ADFE81700AAC1E2 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBE47CB2ADFE81700AAC1E2 /* KeychainPasswordItem.swift */; };
+		ABBE47D02AE1359F00AAC1E2 /* String + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBE47CF2AE1359F00AAC1E2 /* String + ext.swift */; };
+		ABBE47D32AE1661900AAC1E2 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBE47D22AE1661900AAC1E2 /* LogoutViewController.swift */; };
+		ABBE47D52AE1666100AAC1E2 /* LogoutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBE47D42AE1666100AAC1E2 /* LogoutPresenter.swift */; };
+		ABBE47D72AE166AA00AAC1E2 /* LogoutInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBE47D62AE166AA00AAC1E2 /* LogoutInteractor.swift */; };
+		ABBE47D92AE166E700AAC1E2 /* LogoutRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBE47D82AE166E700AAC1E2 /* LogoutRouter.swift */; };
+		ABBE47DB2AE1671C00AAC1E2 /* LogoutConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBE47DA2AE1671C00AAC1E2 /* LogoutConfigurator.swift */; };
+		ABBE48072AE83B9C00AAC1E2 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBE48062AE83B9C00AAC1E2 /* RootViewController.swift */; };
+		ABBE48092AE83F4E00AAC1E2 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBE48082AE83F4E00AAC1E2 /* SplashViewController.swift */; };
+		ABD3C8C02AD41901006F6B06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD3C8BF2AD41901006F6B06 /* AppDelegate.swift */; };
+		ABD3C8C22AD41901006F6B06 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD3C8C12AD41901006F6B06 /* SceneDelegate.swift */; };
+		ABD3C8C92AD41903006F6B06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABD3C8C82AD41903006F6B06 /* Assets.xcassets */; };
+		ABD3C8CC2AD41903006F6B06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABD3C8CA2AD41903006F6B06 /* LaunchScreen.storyboard */; };
+		ABD3C8D62AD41AD2006F6B06 /* UIColor + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD3C8D52AD41AD2006F6B06 /* UIColor + ext.swift */; };
+		ABD3C8D92AD41B17006F6B06 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD3C8D82AD41B17006F6B06 /* Resources.swift */; };
+		ABD3C8DC2AD41B79006F6B06 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD3C8DB2AD41B79006F6B06 /* RootCoordinator.swift */; };
+		ABD3C8E12AD41E52006F6B06 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD3C8E02AD41E52006F6B06 /* AuthViewController.swift */; };
+		ABF8DCCD2AFA52A3000D7D02 /* AstonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF8DCCC2AFA52A3000D7D02 /* AstonTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AB5DC88D2AFBD06E00BEBA63 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ABD3C8B42AD41901006F6B06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ABD3C8BB2AD41901006F6B06;
+			remoteInfo = Aston;
+		};
+		ABF8DCCE2AFA52A3000D7D02 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ABD3C8B42AD41901006F6B06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ABD3C8BB2AD41901006F6B06;
+			remoteInfo = Aston;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9EB4A67D1FBDE3685C57301F /* Pods-Aston.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aston.release.xcconfig"; path = "Target Support Files/Pods-Aston/Pods-Aston.release.xcconfig"; sourceTree = "<group>"; };
+		A02D4EFCB6434922A810E511 /* Pods-Aston.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aston.debug.xcconfig"; path = "Target Support Files/Pods-Aston/Pods-Aston.debug.xcconfig"; sourceTree = "<group>"; };
+		AB0CD6532AF0002C0086413D /* AuthEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEntity.swift; sourceTree = "<group>"; };
+		AB2CD9FC2AE9605300FA2F5A /* CharsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharsEntity.swift; sourceTree = "<group>"; };
+		AB2CD9FE2AE960D000FA2F5A /* EpisodeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeEntity.swift; sourceTree = "<group>"; };
+		AB5DC8872AFBD06D00BEBA63 /* AstonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB5DC8892AFBD06E00BEBA63 /* AstonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstonUITests.swift; sourceTree = "<group>"; };
+		AB5DC88B2AFBD06E00BEBA63 /* AstonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstonUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AB6FEB682AD8023300A44DD2 /* CharsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharsConfigurator.swift; sourceTree = "<group>"; };
+		AB6FEB6A2AD8023E00A44DD2 /* CharsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharsPresenter.swift; sourceTree = "<group>"; };
+		AB6FEB6C2AD8024C00A44DD2 /* CharsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharsRouter.swift; sourceTree = "<group>"; };
+		AB6FEB6E2AD8042E00A44DD2 /* CharsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharsInteractor.swift; sourceTree = "<group>"; };
+		AB6FEB742AD8133F00A44DD2 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
+		AB6FEB762AD8139800A44DD2 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		AB6FEB782AD813A400A44DD2 /* NetworkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkData.swift; sourceTree = "<group>"; };
+		AB6FEB7B2AD824E800A44DD2 /* Collection + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection + ext.swift"; sourceTree = "<group>"; };
+		AB6FEB7E2AD9C76600A44DD2 /* EpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewController.swift; sourceTree = "<group>"; };
+		AB6FEB802AD9C77500A44DD2 /* EpisodePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodePresenter.swift; sourceTree = "<group>"; };
+		AB6FEB822AD9C78200A44DD2 /* EpisodeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeInteractor.swift; sourceTree = "<group>"; };
+		AB6FEB842AD9C78F00A44DD2 /* EpisodeConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeConfigurator.swift; sourceTree = "<group>"; };
+		AB6FEB862AD9C79A00A44DD2 /* EpisodeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRouter.swift; sourceTree = "<group>"; };
+		AB6FEB882ADAA87200A44DD2 /* EpisodeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCollectionCell.swift; sourceTree = "<group>"; };
+		ABB6D22C2AD45B1700276587 /* AuthConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthConfigurator.swift; sourceTree = "<group>"; };
+		ABB6D22E2AD45BC000276587 /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
+		ABB6D2302AD45D4700276587 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
+		ABB6D2322AD45F6C00276587 /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
+		ABB6D2352AD5820E00276587 /* CharsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharsViewController.swift; sourceTree = "<group>"; };
+		ABB6D2382AD5875400276587 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		ABB6D23B2AD5C29600276587 /* CharsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharsTableViewCell.swift; sourceTree = "<group>"; };
+		ABBE47C82ADFDC0100AAC1E2 /* StorageUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageUser.swift; sourceTree = "<group>"; };
+		ABBE47CB2ADFE81700AAC1E2 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
+		ABBE47CF2AE1359F00AAC1E2 /* String + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + ext.swift"; sourceTree = "<group>"; };
+		ABBE47D22AE1661900AAC1E2 /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
+		ABBE47D42AE1666100AAC1E2 /* LogoutPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutPresenter.swift; sourceTree = "<group>"; };
+		ABBE47D62AE166AA00AAC1E2 /* LogoutInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutInteractor.swift; sourceTree = "<group>"; };
+		ABBE47D82AE166E700AAC1E2 /* LogoutRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRouter.swift; sourceTree = "<group>"; };
+		ABBE47DA2AE1671C00AAC1E2 /* LogoutConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutConfigurator.swift; sourceTree = "<group>"; };
+		ABBE48062AE83B9C00AAC1E2 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		ABBE48082AE83F4E00AAC1E2 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		ABD3C8BC2AD41901006F6B06 /* Aston.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aston.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABD3C8BF2AD41901006F6B06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ABD3C8C12AD41901006F6B06 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		ABD3C8C82AD41903006F6B06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ABD3C8CB2AD41903006F6B06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ABD3C8CD2AD41903006F6B06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABD3C8D52AD41AD2006F6B06 /* UIColor + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + ext.swift"; sourceTree = "<group>"; };
+		ABD3C8D82AD41B17006F6B06 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
+		ABD3C8DB2AD41B79006F6B06 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		ABD3C8E02AD41E52006F6B06 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		ABF8DCCA2AFA52A3000D7D02 /* AstonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABF8DCCC2AFA52A3000D7D02 /* AstonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstonTests.swift; sourceTree = "<group>"; };
+		AD3AFF5916FFD4692B89AC93 /* Pods_Aston.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aston.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AB5DC8842AFBD06D00BEBA63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABD3C8B92AD41901006F6B06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02A93505AE5AB9D7360C82EA /* Pods_Aston.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABF8DCC72AFA52A3000D7D02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		752BABF625D686D6D91884BD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AD3AFF5916FFD4692B89AC93 /* Pods_Aston.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AB5DC8882AFBD06E00BEBA63 /* AstonUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AB5DC8892AFBD06E00BEBA63 /* AstonUITests.swift */,
+				AB5DC88B2AFBD06E00BEBA63 /* AstonUITestsLaunchTests.swift */,
+			);
+			path = AstonUITests;
+			sourceTree = "<group>";
+		};
+		AB6FEB702AD812D100A44DD2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				ABBE47CA2ADFE7E700AAC1E2 /* Keychain */,
+				ABBE47C52ADFDBB200AAC1E2 /* Storage */,
+				AB6FEB712AD8130900A44DD2 /* Network */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		AB6FEB712AD8130900A44DD2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AB6FEB722AD8131100A44DD2 /* NetworkManager */,
+				AB6FEB742AD8133F00A44DD2 /* NetworkModel.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		AB6FEB722AD8131100A44DD2 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				AB6FEB762AD8139800A44DD2 /* NetworkRequest.swift */,
+				AB6FEB782AD813A400A44DD2 /* NetworkData.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		AB6FEB7D2AD9C75000A44DD2 /* Episode */ = {
+			isa = PBXGroup;
+			children = (
+				AB6FEB7E2AD9C76600A44DD2 /* EpisodeViewController.swift */,
+				AB6FEB882ADAA87200A44DD2 /* EpisodeCollectionCell.swift */,
+				AB6FEB822AD9C78200A44DD2 /* EpisodeInteractor.swift */,
+				AB6FEB802AD9C77500A44DD2 /* EpisodePresenter.swift */,
+				AB2CD9FE2AE960D000FA2F5A /* EpisodeEntity.swift */,
+				AB6FEB862AD9C79A00A44DD2 /* EpisodeRouter.swift */,
+				AB6FEB842AD9C78F00A44DD2 /* EpisodeConfigurator.swift */,
+			);
+			path = Episode;
+			sourceTree = "<group>";
+		};
+		ABB6D2292AD458C200276587 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				ABD3C8BF2AD41901006F6B06 /* AppDelegate.swift */,
+				ABD3C8C12AD41901006F6B06 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		ABB6D22A2AD4592500276587 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				ABBE47D12AE165EA00AAC1E2 /* Logout */,
+				AB6FEB7D2AD9C75000A44DD2 /* Episode */,
+				ABB6D23A2AD587B100276587 /* TabBar */,
+				ABB6D2342AD581D300276587 /* Chars */,
+				ABB6D22B2AD4592E00276587 /* Auth */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		ABB6D22B2AD4592E00276587 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				ABD3C8E02AD41E52006F6B06 /* AuthViewController.swift */,
+				ABB6D22C2AD45B1700276587 /* AuthConfigurator.swift */,
+				ABB6D22E2AD45BC000276587 /* AuthPresenter.swift */,
+				AB0CD6532AF0002C0086413D /* AuthEntity.swift */,
+				ABB6D2302AD45D4700276587 /* AuthRouter.swift */,
+				ABB6D2322AD45F6C00276587 /* AuthInteractor.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		ABB6D2342AD581D300276587 /* Chars */ = {
+			isa = PBXGroup;
+			children = (
+				ABB6D2352AD5820E00276587 /* CharsViewController.swift */,
+				ABB6D23B2AD5C29600276587 /* CharsTableViewCell.swift */,
+				AB6FEB6E2AD8042E00A44DD2 /* CharsInteractor.swift */,
+				AB6FEB6A2AD8023E00A44DD2 /* CharsPresenter.swift */,
+				AB2CD9FC2AE9605300FA2F5A /* CharsEntity.swift */,
+				AB6FEB6C2AD8024C00A44DD2 /* CharsRouter.swift */,
+				AB6FEB682AD8023300A44DD2 /* CharsConfigurator.swift */,
+			);
+			path = Chars;
+			sourceTree = "<group>";
+		};
+		ABB6D23A2AD587B100276587 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				ABB6D2382AD5875400276587 /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		ABBE47C52ADFDBB200AAC1E2 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				ABBE47C82ADFDC0100AAC1E2 /* StorageUser.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		ABBE47CA2ADFE7E700AAC1E2 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				ABBE47CB2ADFE81700AAC1E2 /* KeychainPasswordItem.swift */,
+			);
+			path = Keychain;
+			sourceTree = "<group>";
+		};
+		ABBE47D12AE165EA00AAC1E2 /* Logout */ = {
+			isa = PBXGroup;
+			children = (
+				ABBE47D22AE1661900AAC1E2 /* LogoutViewController.swift */,
+				ABBE47D62AE166AA00AAC1E2 /* LogoutInteractor.swift */,
+				ABBE47D42AE1666100AAC1E2 /* LogoutPresenter.swift */,
+				ABBE47D82AE166E700AAC1E2 /* LogoutRouter.swift */,
+				ABBE47DA2AE1671C00AAC1E2 /* LogoutConfigurator.swift */,
+			);
+			path = Logout;
+			sourceTree = "<group>";
+		};
+		ABD3C8B32AD41901006F6B06 = {
+			isa = PBXGroup;
+			children = (
+				ABD3C8BE2AD41901006F6B06 /* Aston */,
+				ABF8DCCB2AFA52A3000D7D02 /* AstonTests */,
+				AB5DC8882AFBD06E00BEBA63 /* AstonUITests */,
+				ABD3C8BD2AD41901006F6B06 /* Products */,
+				AE1110A6B0BF2979822C4C28 /* Pods */,
+				752BABF625D686D6D91884BD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		ABD3C8BD2AD41901006F6B06 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ABD3C8BC2AD41901006F6B06 /* Aston.app */,
+				ABF8DCCA2AFA52A3000D7D02 /* AstonTests.xctest */,
+				AB5DC8872AFBD06D00BEBA63 /* AstonUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ABD3C8BE2AD41901006F6B06 /* Aston */ = {
+			isa = PBXGroup;
+			children = (
+				ABD3C8D32AD41A98006F6B06 /* Helpers */,
+				AB6FEB702AD812D100A44DD2 /* Services */,
+				ABB6D2292AD458C200276587 /* Application */,
+				ABD3C8DA2AD41B62006F6B06 /* RootCoordinator */,
+				ABB6D22A2AD4592500276587 /* Modules */,
+				ABD3C8C82AD41903006F6B06 /* Assets.xcassets */,
+				ABD3C8CA2AD41903006F6B06 /* LaunchScreen.storyboard */,
+				ABD3C8CD2AD41903006F6B06 /* Info.plist */,
+			);
+			path = Aston;
+			sourceTree = "<group>";
+		};
+		ABD3C8D32AD41A98006F6B06 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				ABD3C8D42AD41AB4006F6B06 /* Extensions */,
+				ABD3C8D82AD41B17006F6B06 /* Resources.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		ABD3C8D42AD41AB4006F6B06 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ABD3C8D52AD41AD2006F6B06 /* UIColor + ext.swift */,
+				AB6FEB7B2AD824E800A44DD2 /* Collection + ext.swift */,
+				ABBE47CF2AE1359F00AAC1E2 /* String + ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		ABD3C8DA2AD41B62006F6B06 /* RootCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				ABD3C8DB2AD41B79006F6B06 /* RootCoordinator.swift */,
+				ABBE48062AE83B9C00AAC1E2 /* RootViewController.swift */,
+				ABBE48082AE83F4E00AAC1E2 /* SplashViewController.swift */,
+			);
+			path = RootCoordinator;
+			sourceTree = "<group>";
+		};
+		ABF8DCCB2AFA52A3000D7D02 /* AstonTests */ = {
+			isa = PBXGroup;
+			children = (
+				ABF8DCCC2AFA52A3000D7D02 /* AstonTests.swift */,
+			);
+			path = AstonTests;
+			sourceTree = "<group>";
+		};
+		AE1110A6B0BF2979822C4C28 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A02D4EFCB6434922A810E511 /* Pods-Aston.debug.xcconfig */,
+				9EB4A67D1FBDE3685C57301F /* Pods-Aston.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AB5DC8862AFBD06D00BEBA63 /* AstonUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB5DC8912AFBD06E00BEBA63 /* Build configuration list for PBXNativeTarget "AstonUITests" */;
+			buildPhases = (
+				AB5DC8832AFBD06D00BEBA63 /* Sources */,
+				AB5DC8842AFBD06D00BEBA63 /* Frameworks */,
+				AB5DC8852AFBD06D00BEBA63 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AB5DC88E2AFBD06E00BEBA63 /* PBXTargetDependency */,
+			);
+			name = AstonUITests;
+			productName = AstonUITests;
+			productReference = AB5DC8872AFBD06D00BEBA63 /* AstonUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		ABD3C8BB2AD41901006F6B06 /* Aston */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ABD3C8D02AD41903006F6B06 /* Build configuration list for PBXNativeTarget "Aston" */;
+			buildPhases = (
+				DE484A0D8A0999F0F87253D2 /* [CP] Check Pods Manifest.lock */,
+				ABD3C8B82AD41901006F6B06 /* Sources */,
+				ABD3C8B92AD41901006F6B06 /* Frameworks */,
+				ABD3C8BA2AD41901006F6B06 /* Resources */,
+				57244EFBB549418B63C25C73 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Aston;
+			productName = Aston;
+			productReference = ABD3C8BC2AD41901006F6B06 /* Aston.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ABF8DCC92AFA52A3000D7D02 /* AstonTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ABF8DCD22AFA52A3000D7D02 /* Build configuration list for PBXNativeTarget "AstonTests" */;
+			buildPhases = (
+				ABF8DCC62AFA52A3000D7D02 /* Sources */,
+				ABF8DCC72AFA52A3000D7D02 /* Frameworks */,
+				ABF8DCC82AFA52A3000D7D02 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ABF8DCCF2AFA52A3000D7D02 /* PBXTargetDependency */,
+			);
+			name = AstonTests;
+			productName = AstonTests;
+			productReference = ABF8DCCA2AFA52A3000D7D02 /* AstonTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ABD3C8B42AD41901006F6B06 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					AB5DC8862AFBD06D00BEBA63 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = ABD3C8BB2AD41901006F6B06;
+					};
+					ABD3C8BB2AD41901006F6B06 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					ABF8DCC92AFA52A3000D7D02 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = ABD3C8BB2AD41901006F6B06;
+					};
+				};
+			};
+			buildConfigurationList = ABD3C8B72AD41901006F6B06 /* Build configuration list for PBXProject "Aston" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ABD3C8B32AD41901006F6B06;
+			productRefGroup = ABD3C8BD2AD41901006F6B06 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ABD3C8BB2AD41901006F6B06 /* Aston */,
+				ABF8DCC92AFA52A3000D7D02 /* AstonTests */,
+				AB5DC8862AFBD06D00BEBA63 /* AstonUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AB5DC8852AFBD06D00BEBA63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABD3C8BA2AD41901006F6B06 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABD3C8CC2AD41903006F6B06 /* LaunchScreen.storyboard in Resources */,
+				ABD3C8C92AD41903006F6B06 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABF8DCC82AFA52A3000D7D02 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		57244EFBB549418B63C25C73 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Aston/Pods-Aston-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Aston/Pods-Aston-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Aston/Pods-Aston-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE484A0D8A0999F0F87253D2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Aston-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AB5DC8832AFBD06D00BEBA63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB5DC88C2AFBD06E00BEBA63 /* AstonUITestsLaunchTests.swift in Sources */,
+				AB5DC88A2AFBD06E00BEBA63 /* AstonUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABD3C8B82AD41901006F6B06 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABB6D22F2AD45BC000276587 /* AuthPresenter.swift in Sources */,
+				AB6FEB7C2AD824E800A44DD2 /* Collection + ext.swift in Sources */,
+				ABD3C8C02AD41901006F6B06 /* AppDelegate.swift in Sources */,
+				AB6FEB6F2AD8042E00A44DD2 /* CharsInteractor.swift in Sources */,
+				ABD3C8C22AD41901006F6B06 /* SceneDelegate.swift in Sources */,
+				ABBE47CC2ADFE81700AAC1E2 /* KeychainPasswordItem.swift in Sources */,
+				ABB6D22D2AD45B1700276587 /* AuthConfigurator.swift in Sources */,
+				AB6FEB872AD9C79A00A44DD2 /* EpisodeRouter.swift in Sources */,
+				ABBE48072AE83B9C00AAC1E2 /* RootViewController.swift in Sources */,
+				AB6FEB692AD8023300A44DD2 /* CharsConfigurator.swift in Sources */,
+				ABD3C8DC2AD41B79006F6B06 /* RootCoordinator.swift in Sources */,
+				AB6FEB7F2AD9C76600A44DD2 /* EpisodeViewController.swift in Sources */,
+				ABBE47D02AE1359F00AAC1E2 /* String + ext.swift in Sources */,
+				ABBE47D92AE166E700AAC1E2 /* LogoutRouter.swift in Sources */,
+				ABD3C8D92AD41B17006F6B06 /* Resources.swift in Sources */,
+				ABBE47D32AE1661900AAC1E2 /* LogoutViewController.swift in Sources */,
+				AB6FEB792AD813A400A44DD2 /* NetworkData.swift in Sources */,
+				ABB6D2332AD45F6C00276587 /* AuthInteractor.swift in Sources */,
+				AB6FEB6B2AD8023E00A44DD2 /* CharsPresenter.swift in Sources */,
+				AB6FEB772AD8139800A44DD2 /* NetworkRequest.swift in Sources */,
+				AB6FEB832AD9C78200A44DD2 /* EpisodeInteractor.swift in Sources */,
+				ABD3C8E12AD41E52006F6B06 /* AuthViewController.swift in Sources */,
+				ABB6D23C2AD5C29600276587 /* CharsTableViewCell.swift in Sources */,
+				AB2CD9FD2AE9605300FA2F5A /* CharsEntity.swift in Sources */,
+				AB6FEB752AD8133F00A44DD2 /* NetworkModel.swift in Sources */,
+				AB6FEB892ADAA87200A44DD2 /* EpisodeCollectionCell.swift in Sources */,
+				ABB6D2312AD45D4700276587 /* AuthRouter.swift in Sources */,
+				AB2CD9FF2AE960D000FA2F5A /* EpisodeEntity.swift in Sources */,
+				ABBE47C92ADFDC0100AAC1E2 /* StorageUser.swift in Sources */,
+				ABB6D2392AD5875400276587 /* TabBarController.swift in Sources */,
+				AB6FEB852AD9C78F00A44DD2 /* EpisodeConfigurator.swift in Sources */,
+				ABBE47D72AE166AA00AAC1E2 /* LogoutInteractor.swift in Sources */,
+				ABBE47D52AE1666100AAC1E2 /* LogoutPresenter.swift in Sources */,
+				ABD3C8D62AD41AD2006F6B06 /* UIColor + ext.swift in Sources */,
+				AB0CD6542AF0002C0086413D /* AuthEntity.swift in Sources */,
+				ABBE48092AE83F4E00AAC1E2 /* SplashViewController.swift in Sources */,
+				ABBE47DB2AE1671C00AAC1E2 /* LogoutConfigurator.swift in Sources */,
+				AB6FEB812AD9C77500A44DD2 /* EpisodePresenter.swift in Sources */,
+				AB6FEB6D2AD8024C00A44DD2 /* CharsRouter.swift in Sources */,
+				ABB6D2362AD5820E00276587 /* CharsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABF8DCC62AFA52A3000D7D02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABF8DCCD2AFA52A3000D7D02 /* AstonTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AB5DC88E2AFBD06E00BEBA63 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ABD3C8BB2AD41901006F6B06 /* Aston */;
+			targetProxy = AB5DC88D2AFBD06E00BEBA63 /* PBXContainerItemProxy */;
+		};
+		ABF8DCCF2AFA52A3000D7D02 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ABD3C8BB2AD41901006F6B06 /* Aston */;
+			targetProxy = ABF8DCCE2AFA52A3000D7D02 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		ABD3C8CA2AD41903006F6B06 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ABD3C8CB2AD41903006F6B06 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AB5DC88F2AFBD06E00BEBA63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 65ZT2PZTN2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sulim.cool.AstonUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Aston;
+			};
+			name = Debug;
+		};
+		AB5DC8902AFBD06E00BEBA63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 65ZT2PZTN2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sulim.cool.AstonUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Aston;
+			};
+			name = Release;
+		};
+		ABD3C8CE2AD41903006F6B06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		ABD3C8CF2AD41903006F6B06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ABD3C8D12AD41903006F6B06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A02D4EFCB6434922A810E511 /* Pods-Aston.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 65ZT2PZTN2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Aston/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sulim.cool.Aston;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		ABD3C8D22AD41903006F6B06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EB4A67D1FBDE3685C57301F /* Pods-Aston.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 65ZT2PZTN2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Aston/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sulim.cool.Aston;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		ABF8DCD02AFA52A3000D7D02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 65ZT2PZTN2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sulim.cool.AstonTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aston.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Aston";
+			};
+			name = Debug;
+		};
+		ABF8DCD12AFA52A3000D7D02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 65ZT2PZTN2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sulim.cool.AstonTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aston.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Aston";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AB5DC8912AFBD06E00BEBA63 /* Build configuration list for PBXNativeTarget "AstonUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB5DC88F2AFBD06E00BEBA63 /* Debug */,
+				AB5DC8902AFBD06E00BEBA63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ABD3C8B72AD41901006F6B06 /* Build configuration list for PBXProject "Aston" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABD3C8CE2AD41903006F6B06 /* Debug */,
+				ABD3C8CF2AD41903006F6B06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ABD3C8D02AD41903006F6B06 /* Build configuration list for PBXNativeTarget "Aston" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABD3C8D12AD41903006F6B06 /* Debug */,
+				ABD3C8D22AD41903006F6B06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ABF8DCD22AFA52A3000D7D02 /* Build configuration list for PBXNativeTarget "AstonTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABF8DCD02AFA52A3000D7D02 /* Debug */,
+				ABF8DCD12AFA52A3000D7D02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ABD3C8B42AD41901006F6B06 /* Project object */;
+}
